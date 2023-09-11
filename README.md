@@ -3,7 +3,7 @@
 <br />
 
 <div align="center">
-  <img width="200" alt="logo" src="https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/368b5d55-1825-499a-848b-576beff0c221.jpg" />
+  <img width="200" alt="logo" src="https://github.com/sophie925/wequiz-front/assets/89984685/b2cbd0b6-8eee-43e0-9646-85079d55d2e0.jpg" />
   <p>
     <br />
     누구나 함께 즐기는 초성게임, <strong>'위퀴즈'</strong>!
@@ -117,11 +117,11 @@
   
   |로그인전-메인(웹버전)|로그인전-메인(모바일버전)|
   |---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/d6b08ce3-3638-43fd-9983-6c9819e2a15d.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/9f60758c-65ab-4d27-b722-1d8191ee3d9d.jpg)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/c1831fb9-b9ad-46ac-a464-c22156550d6a.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/18c7ec28-6abc-4e2d-b7eb-cce5fe560b86.jpg)|
   
   |로그인후-메인(웹버전)|로그인후-메인(모바일버전)|
   |---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/0d5af395-94b2-4bd1-a5f4-ddc0096b056b.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/3970ad39-d9ba-41ea-b1b6-5a79d64bcef5.jpg)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/7344182a-7b8e-4e96-b27a-b78db3eb95fa.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/60a6a0f1-c64d-4824-8838-bb97495bad71.jpg)|
 
   |좋아요|찜하기|공유하기|공유하기(팝업)-카카오톡|
   |---|---|---|---|
@@ -140,7 +140,7 @@
   
   |로그인|재설정용 이메일전송|비밀번호 재설정|
   |---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/24d28238-43a4-413a-a7cd-740be427b59f.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/7a7d59e8-9fd9-4112-8a6e-eac77384cee3)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/b750ce17-46b1-405c-957f-a746f3bf08e0)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/3aa23983-a46e-4c6c-8923-31b7e72afac5.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/7a7d59e8-9fd9-4112-8a6e-eac77384cee3)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/b750ce17-46b1-405c-957f-a746f3bf08e0)|
   <br />
 </details>
 
@@ -152,7 +152,7 @@
   
   |회원가입|로딩화면|이메일전송|
   |---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/c4918aba-137a-4ae7-a1cc-2ccc4e236faa.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/7d6ba6b5-2b2e-4400-8e46-a3a8fceb826f)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/6059b41c-0db6-4467-8434-a1ce076afcd1)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/1ba021c7-c686-4719-91b2-7214a84da163.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/7d6ba6b5-2b2e-4400-8e46-a3a8fceb826f)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/6059b41c-0db6-4467-8434-a1ce076afcd1)|
   
   |이메일확인|계정생성|계정생성-필수체크|계정생성-전체체크|
   |---|---|---|---|
@@ -172,7 +172,7 @@
   
   |마이페이지|나의 정보|회원정보수정|비밀번호변경|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/64711853-61c9-4903-aafb-39e647eed15b.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/5ca2f554-ab49-4fb5-8508-1c403f2d4629.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/ab796d66-2104-449b-8b16-d56a35945e0b)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/6a31392f-ea8a-4ad2-a66a-00a65bb9cfc7)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/e209c8da-d924-45b0-ba16-7e81bdca58e9.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/fd1505b6-7059-431e-b877-8224a7bdd275.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/ab796d66-2104-449b-8b16-d56a35945e0b)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/6a31392f-ea8a-4ad2-a66a-00a65bb9cfc7)|
   
   |찜한 퀴즈|내 퀴즈|내 퀴즈(상세조회)|
   |---|---|---|
@@ -196,11 +196,11 @@
   
   |퀴즈풀기(상세)|힌트조회|결과조회|답안지확인|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/bbb747b6-0c3d-489f-8b3a-161770c7e596.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/2e54d28c-cefe-4584-82fc-40cd866df422)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/e83df6d1-c074-4e71-83f6-d6d704696018.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/da67f1ee-d9a2-4e53-9f05-48d30738b258.jpg)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/31d5d768-7018-4f4a-8ce6-ef3934510675.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/2e54d28c-cefe-4584-82fc-40cd866df422)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/59806fb4-cb25-4889-b015-4e7f3a12c055.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/fe5990e9-1f10-4bb1-8453-adc262deff20.jpg)|
   
   |힌트사용(팝업)|정답|오답|시간초과|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/b572801e-75d8-4499-800e-d4356187a22c)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/9801404a-e7f9-49d8-9b86-2d7bb90c5db2.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/c3a42a91-29bb-493b-867c-4cef3191f171.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/6dc6876e-b756-4490-88dc-0d2bdf187d79.jpg)|
+  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/b572801e-75d8-4499-800e-d4356187a22c)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/2fee3188-0c55-4ccc-8116-1d46f9f41960.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/7c5a33b5-e381-4b98-a7b0-35d3d018b181.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/c67b9d29-e578-4ac1-9c0e-85b55cdd8eef.jpg)|
   <br />
 </details>
 
@@ -215,7 +215,7 @@
   
   |기본정보|퀴즈정보|퀴즈완료안내(팝업)|최종확인|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/8a840492-169b-4b00-a12f-adae6c9165b3.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/63ebb605-3a01-4e57-a711-c4eb5b4f4b93.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/9e01154f-3898-404e-8d7c-31dfaa81b687.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/30aef35b-1218-4a60-8fbd-9d50ff4b0c71.jpg)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/7e64c010-56e3-4aa7-ac5d-8fe65e4989c93.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/45b8fbe0-385f-4682-a883-82e3213e38c7.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/d24598a1-6592-491c-8054-aab8a1caa6ff.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/dc65da36-1827-4aeb-8768-2f13aa3bc1ce.jpg)|
   <br />
 </details>
 
@@ -228,7 +228,7 @@
   
   |공지사항 목록|공지사항 상세조회|공지사항 목록(관리자)|공지사항 목록|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/0afd4aab-8a86-45d3-a635-b97c8fdd69b2.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/ea9c3b1b-5c75-47df-8225-199d6ce8da0b.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/e8a5346a-5b5e-4d35-89fa-1a91c0df9b4f.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/cd67470e-3925-457f-9987-659785a59789.jpg)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/30a9352a-662b-4495-a378-f5ae0c6f932c.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/2a9a40dc-247d-44f3-826a-505b105b3187.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/18800fa8-de03-40ad-85ac-0a551cee6923.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/aa2239bb-9a07-4cf4-afce-65076b07e90b.jpg)|
 </details>
 
 <br />
