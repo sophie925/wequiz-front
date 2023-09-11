@@ -20,7 +20,7 @@ const MyBookmarkList = () => {
     // 북마크한 퀴즈 목록 조회 api 호출 후 로직
     useEffect(() => {
         if (form && form.status === 200) {
-            console.log("북마크 목록 조회 성공", form);
+            // console.log("북마크 목록 조회 성공", form);
             setQuizData(form.data.data);
         }
     }, [form]);

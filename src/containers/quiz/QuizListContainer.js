@@ -1,12 +1,14 @@
 import QuizListForm from "../../components/quiz/QuizListForm";
 import Dialog from "../../components/common/Dialog";
 import ModalForm from "../../components/common/ModalForm";
+import Loading01 from "../../components/common/Loading01";
 import ShareKaKaoForm from "./ShareKakaoForm";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { bookmarkReset, setBookmark } from "../../modules/bookmark";
 import { likeMarkReset, setLikeMark } from "../../modules/likeMark";
+import { solveReset } from "../../modules/solve";
 
 const QuizListContainer = ({ type, form }) => {
     const dispatch = useDispatch();
@@ -25,6 +27,7 @@ const QuizListContainer = ({ type, form }) => {
         state: ''
     });
     const [shareData, setShareData] = useState({});
+    const [loading, setLoading] = useState(false);
 
     // 내 퀴즈 목록 - 퀴즈 확인안내용 팝업
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -41,8 +44,15 @@ const QuizListContainer = ({ type, form }) => {
     const handleCompletedOpen = () => setIsCompletedOpen(true);
     const handleCompletedClose = () => setIsCompletedOpen(false);
 
+    useEffect(() => {
+        // 퀴즈 로딩중 구성
+        setLoading(true);
+        setTimeout(() => setLoading(false), 1000);
+    }, []);
+
     // 퀴즈 클릭 시
     const onQuizClick = (index, value) => {
+        dispatch(solveReset());
         if (type === "mine") {
             handleDialogOpen();
             setQuizData(form[index]);
@@ -113,7 +123,8 @@ const QuizListContainer = ({ type, form }) => {
     };
 
     // 북마크 아이콘 클릭 시
-    const onClickBookmark = (index, value) => {
+    const onClickBookmark = (e, index, value) => {
+        e.stopPropagation();
         const { quizPaperId, solvingStatus } = value;
         const bookmarkData = {
             index: index,
@@ -126,7 +137,7 @@ const QuizListContainer = ({ type, form }) => {
     // 북마크 설정/해제 api 수행 후 로직
     useEffect(() => {
         if (result && result.status === 200) {
-            console.log("북마크 성공", result);
+            // console.log("북마크 성공", result);
             const { bookmarked } = result.data.data;
             const { index } = markedIndexInfo;
             const updatedData = { ...form };
@@ -137,7 +148,8 @@ const QuizListContainer = ({ type, form }) => {
     }, [result, dispatch, markedIndexInfo, form]);
 
     // 좋아요 아이콘 클릭 시
-    const onClickLikeMark = (index, value) => {
+    const onClickLikeMark = (e, index, value) => {
+        e.stopPropagation();
         const { quizPaperId, solvingStatus } = value;
         const likeMarkData = {
             index: index,
@@ -150,7 +162,7 @@ const QuizListContainer = ({ type, form }) => {
     // 좋아요 설정/해제 api 수행 후 로직
     useEffect(() => {
         if (result2 && result2.status === 200) {
-            console.log("좋아요 성공", result2);
+            // console.log("좋아요 성공", result2);
             const { likeMarked } = result2.data.data;
             const { index } = markedIndexInfo;
             const updatedData = { ...form };
@@ -166,7 +178,9 @@ const QuizListContainer = ({ type, form }) => {
     const handleShareOpen = () => setIsShareOpen(true)
     const handleShareClose = () => setIsShareOpen(false);
 
-    const onClickShare = value => {
+    // 공유하기 아이콘 클릭 시
+    const onClickShare = (e, value) => {
+        e.stopPropagation();
         handleShareOpen();
         const { quizPaperId, title } = value;
         const updateShareData = {
@@ -178,14 +192,16 @@ const QuizListContainer = ({ type, form }) => {
 
     return (
         <>
-            <QuizListForm
-                type={type}
-                form={form}
-                onClickShare={onClickShare}
-                onClickBookmark={onClickBookmark}
-                onClickLikeMark={onClickLikeMark}
-                onClick={onQuizClick}
-            />
+            {loading ? <Loading01 /> : (
+                <QuizListForm
+                    type={type}
+                    form={form}
+                    onClickShare={onClickShare}
+                    onClickBookmark={onClickBookmark}
+                    onClickLikeMark={onClickLikeMark}
+                    onClick={onQuizClick}
+                />
+            )}
             {isDialogOpen && 
                 <Dialog isOpen={isDialogOpen}
                     title="퀴즈를 확인하시겠습니까?"

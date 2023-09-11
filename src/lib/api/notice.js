@@ -16,13 +16,13 @@ export const viewContent = noticeId => client.get(`/api/v1/notice/${noticeId}`);
 // 공지사항 등록
 export const createNotice = ({ title, content }) =>
     client.post('/api/v1/notice', {
-        title: title,
-        content: content
+        title,
+        content
     });
 
 // 공지사항 수정
 export const modifyNotice = ({ noticeId, title, content }) =>
     client.put(`/api/v1/notice/${noticeId}`, {
-        title: title,
-        content: content
+        title,
+        content
     });

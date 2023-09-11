@@ -69,7 +69,7 @@ const SolveCheckAnswer = () => {
 
     useEffect(() => {
         if (form && form.status === 200) {
-            console.log("퀴즈 결과화면 조회 성공!", form);
+            // console.log("퀴즈 결과화면 조회 성공!", form);
             const quizData = form?.data.data;
             setQuizData(quizData);
             let count = 0;

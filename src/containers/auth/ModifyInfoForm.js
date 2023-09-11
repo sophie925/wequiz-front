@@ -50,7 +50,7 @@ const ModifyInfoForm = () => {
             console.log("회원정보 수정 발생: ", authError);
         }
         if (auth) {
-            console.log("회원정보 수정 성공: ", auth);
+            // console.log("회원정보 수정 성공: ", auth);
             dispatch(authReset());
             dispatch(changeField({ form: 'modify', key: 'name', value: '' }));
             navigate("/mypage");

@@ -14,7 +14,7 @@ export const viewHint = createAction(VIEWHINT, hintId => hintId);
 // 사가 생성
 const viewHintSaga = createRequestSaga(VIEWHINT, hintAPI.viewHint);
 export function* hintSaga() {
-    console.log("hint saga success");
+    // console.log("hint saga success");
 
     yield takeLatest(VIEWHINT, viewHintSaga);
 }

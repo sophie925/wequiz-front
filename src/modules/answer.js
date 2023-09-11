@@ -15,7 +15,7 @@ export const checkQuizAnswer = createAction(CHECKQUIZANSWER, ({ quizId, answer }
 // 사가 생성
 const checkQuizAnswerSaga = createRequestSaga(CHECKQUIZANSWER, answerAPI.checkQuizAnswer);
 export function* answerSaga() {
-    console.log("answer saga success");
+    // console.log("answer saga success");
 
     yield takeLatest(CHECKQUIZANSWER, checkQuizAnswerSaga);
 }

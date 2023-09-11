@@ -14,7 +14,7 @@ export const setBookmark = createAction(SETBOOKMARK, quizPaperId => quizPaperId)
 // 사가 생성
 const setBookmarkSaga = createRequestSaga(SETBOOKMARK, bookmarkAPI.setBookmark);
 export function* bookmarkSaga() {
-    console.log("bookmark saga success");
+    // console.log("bookmark saga success");
 
     yield takeLatest(SETBOOKMARK, setBookmarkSaga);
 }

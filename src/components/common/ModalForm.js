@@ -1,5 +1,5 @@
 import { MdClose } from 'react-icons/md'
-import { ModalCloseBtn, ModalContentBlock, ModalFormBlock, ModalTitleBlock, ModalTopBlock, ModalTopEndBlock, ModalTopFrontBlock, ModalWrap } from './ModalElements';
+import { ModalCloseBtn, ModalContentBlock, ModalFormBlock, ModalTitleBlock, ModalTopBlock, ModalTopEndBlock, ModalTopFrontBlock, ModalWrap } from '../../styles/common/ModalElements';
 
 const ModalForm = (props) => {
     return(

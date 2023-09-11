@@ -1,7 +1,8 @@
+import { AuthBottomWrap, BottomLink, BottomLink2, BottomLinkWrap } from "../../styles/auth/AuthElements";
+import { ErrorText } from "../../styles/common/CommonElements";
 import Button from "../common/Button";
-import { AuthBottomWrap, BottomLink, BottomLink2, BottomLinkWrap, ErrorText } from "./AuthElements";
-import MailForm from "./MailForm";
 import ModalForm from "../common/ModalForm";
+import MailForm from "./MailForm";
 
 /**
  * 회원가입 또는 로그인 폼을 보여줌
@@ -62,7 +63,7 @@ const AuthForm = ({ type, form, className, errorText, isOpen, handleClose, isMod
                         <label>Password</label>
                     </div>
                 )}
-                <ErrorText>{errorText}</ErrorText>
+                <ErrorText isAuth={true}>{errorText}</ErrorText>
                 <Button fullwidth indigo>{text}</Button>
             </form>
             <AuthBottomWrap>

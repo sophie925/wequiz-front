@@ -1,4 +1,4 @@
-import { AuthFormBlock, AuthLogoLink, AuthLogoSmallTitle, AuthLogoTitle, AuthLogoWrap, AuthTemplateBlock, WhiteBox } from "./AuthElements";
+import { AuthFormBlock, AuthLogoLink, AuthLogoSmallTitle, AuthLogoTitle, AuthLogoWrap, AuthTemplateBlock, WhiteBox } from "../../styles/auth/AuthElements";
 
 /**
  * 회원가입/로그인 페이지의 레이아웃을 담당하는 컴포넌트

@@ -1,19 +1,24 @@
+import { OwlIcon, ResultItem, SolveResultBlock, SolveResultBoxWrap, SovleQuizResult, SovleQuizResultDetail } from '../../styles/quiz/QuizSolveElements';
 import Button from '../../components/common/Button';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { OwlIcon, ResultItem, SolveResultBlock, SolveResultBoxWrap, SovleQuizResult, SovleQuizResultDetail } from '../../components/quiz/QuizSolveElements';
+import { useDispatch } from 'react-redux';
+import { solveReset } from '../../modules/solve';
 
 const SolveResult = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-    const { quizPaperId, title, totalCount, correctCount } = location.state;
+    const { quizPaperId, title, totalCount, correctCount, quizList } = location.state;
     
     const onClick = e => {
+        dispatch(solveReset());
         navigate('/solveCheckAnswer', {
             state: {
                 quizPaperId: quizPaperId,
                 title: title,
-                correctCount: correctCount,
-                totalCount: totalCount
+                correctCnt: correctCount,
+                totalCnt: totalCount,
+                quizList: quizList ?? ''
             }
         });
     };

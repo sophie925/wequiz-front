@@ -1,144 +1,48 @@
-import styled from "styled-components";
-import StyledButton from "../common/Button";
-import oc from 'open-color';
-import { Button, ToggleButton, ToggleButtonGroup } from "../../../node_modules/@mui/material/index";
 import { MdOutlineCreate } from 'react-icons/md';
-import ModalForm from "../common/ModalForm";
+import { Button, ToggleButton, ToggleButtonGroup } from "../../../node_modules/@mui/material/index";
+import { QuizFormBlock, QuizNumberBtnWrap, QuizNumberText } from "../../styles/quiz/QuizElements";
+import { BothInputWrap, ErrorText, InputBtnWrap, InputWrap } from "../../styles/common/CommonElements";
+import StyledButton from "../common/Button";
 import CategoryItem from "./CategoryItem";
 import QuizDetailList from "./QuizDetailList";
+import ModalForm from "../common/ModalForm";
 import Dialog from "../common/Dialog";
 
 /**
  * 퀴즈 만들기 또는 풀기 폼을 보여줌
  */
 
-const QuizFormBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    * {
-        box-sizing: border-box;
-    }
-    select {
-        font-family: "BMHANNA Air";
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-        margin-right: 5px;
-        border: 1px solid #dadce0;
-        border-radius: 4px;
-        box-sizing: border-box;
-        color: #424242;
-        transition: color .1s, background-color .1s, border-color 1s;
-        width: 200px;
-    }
-    .quiz-move-button-area {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
-    }
-    .move-button-area {
-        display: flex;
-        margin-top: 30px;
-        Button {
-            margin: 0.25rem;
-        }
-    }
-    .label {
-        display: flex;
-        flex-direction: column;
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        input {
-            font-family: "BMHANNA Air";
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            outline: none;
-            width: 100%;
-            box-sizing: border-box;
-            padding: 15px 20px;
-            font-size: 16px;
-            margin-bottom: 12px;
-            height: 50px;
-            &:focus {
-                border: 2px solid ${oc.indigo[8]};
-            }
-        }
-    }
-    .both {
-        display: flex;
-    }
-    .both .label {
-        flex: 0.5;
-        &:last-child {
-            margin-left: 10px;
-        }
-        button {
-            width: 50%;
-        }
-    }
-    .label .btn {
-        display: flex;
-        justify-content: space-between;
-        input:focus {
-            border: 1px solid #ddd;
-        }
-        button {
-            width: 30%;
-            height: 48px;
-            margin-left: 5px;
-        }
-    }
-`;
-
-const QuizNumberBtnWrap = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 10px 0 40px;
-    Button{
-        margin: 0 5px;
-        padding: 5px;
-        min-width: 25px;
-        position: none;
-        background-color: ${oc.indigo[6]};
-    }
-`;
-
-const QuizForm = ({ step, form, data, quizCount, selectNumber, cho_hangul, 
-        isModalOpen, onMadalClick, onCateClick, onChange, onSelectChange, onClick,
-        isOpen, handleClose, onClickQuizNumberButton, onClickNextQuiz,
-        isDialogOpen, isDialogClick }) => {
+const QuizForm = ({ step, form, data, quizCount, selectNumber, errorText,
+        isModalOpen, onMadalClick, onCateClick, onChange, onClick,
+        isOpen, handleClose, onClickQuizNumberButton, isDialogOpen, isDialogClick }) => {
     return (
         <QuizFormBlock>
             {step === "step1" && (
-                <div>
-                    <div className="label">
+                <>
+                    <InputWrap>
                         <label>제목*</label>
                         <input
                             type="text"
                             name="title"
-                            onChange={onChange}
+                            onChange={e => onChange(e)}
                             value={data.title}
                             placeholder="퀴즈제목을 입력하세요."
                             required
                         />
-                    </div>
-                    <div className="label">
+                    </InputWrap>
+                    <InputWrap>
                         <label>설명</label>
                         <input
                             type="text"
                             name="description"
-                            onChange={onChange}
+                            onChange={e => onChange(e)}
                             value={data.description}
                             placeholder="퀴즈설명을 간단히 입력하세요."
                         />
-                    </div>
-                    <div className="label">
+                    </InputWrap>
+                    <InputWrap>
                         <label>카테고리*</label>
-                        <div className="btn">
+                        <InputBtnWrap>
                             <input
                                 type="text"
                                 name="categoryDispaly"
@@ -153,44 +57,44 @@ const QuizForm = ({ step, form, data, quizCount, selectNumber, cho_hangul,
                                 hidden
                             />
                             <StyledButton onClick={onMadalClick[0]}>선 택</StyledButton>
-                        </div>
-                    </div>
+                        </InputBtnWrap>
+                    </InputWrap>
                     {isModalOpen && 
                         <ModalForm isOpen={isModalOpen} title="카테고리 선택" onClose={onMadalClick[1]}>
                             <CategoryItem categories={form && form.data.data}  onClick={onCateClick} />
                         </ModalForm>
                     }
-                    <div className="both">
-                        <div className="label">
+                    <BothInputWrap>
+                        <InputWrap>
                             <label>개수(1-10개)*</label>
                             <input
                                 type="text"
                                 name="quizCount"
-                                onChange={onChange}
+                                onChange={e => onChange(e)}
                                 placeholder="퀴즈개수를 입력하세요."
                                 value={data.quizCount}
                                 min="1"
                                 max="10"
                             />
-                        </div>
-                        <div className="label">
+                        </InputWrap>
+                        <InputWrap>
                             <label>공개여부*</label>
                             <ToggleButtonGroup
                                 name="accessibility"
                                 value={data.accessibility}
                                 exclusive
-                                onChange={e => onSelectChange(e, "accessibility")}
+                                onChange={e => onChange(e, "accessibility")}
                                 aria-label="Platform"
                             >
                                 <ToggleButton value="PUBLIC">공개</ToggleButton>
                                 <ToggleButton value="PRIVATE">비공개</ToggleButton>
                             </ToggleButtonGroup>
-                        </div>
-                    </div>
-                </div>
+                        </InputWrap>
+                    </BothInputWrap>
+                </>
             )}
             {step === "step2" && (
-                <div>
+                <>
                     <QuizNumberBtnWrap>
                         {quizCount.map((isDisabled, index) => (
                             <Button
@@ -205,11 +109,11 @@ const QuizForm = ({ step, form, data, quizCount, selectNumber, cho_hangul,
                         ))}
                     </QuizNumberBtnWrap>
                     <form>
-                        <p style={{fontWeight: 'bold', display: 'flex'}}>
+                        <QuizNumberText>
                             <MdOutlineCreate />
                             {selectNumber}번 문제
-                            </p>
-                        <div className="label">
+                        </QuizNumberText>
+                        <InputWrap>
                             <label>퀴즈정답</label>
                             <input
                                 type="text"
@@ -218,24 +122,22 @@ const QuizForm = ({ step, form, data, quizCount, selectNumber, cho_hangul,
                                 onChange={onChange}
                                 required
                             />
-                        </div>
-                        <div className="label">
-                            {Array(3).fill().map((_, index) => (
-                                <input
-                                    type="text"
-                                    name="hints"
-                                    key={index}
-                                    value={form.hints[index] ?? ''}
-                                    placeholder={`${index+1}번째 힌트`}
-                                    onChange={e => onChange(e, index)}
-                                    required
-                                />
-                            ))}
-                        </div>
+                        </InputWrap>
+                        <InputWrap>
+                        {Array(3).fill().map((_, index) => (
+                            <input
+                                type="text"
+                                name="hints"
+                                key={index}
+                                value={form.hints[index] ?? ''}
+                                placeholder={`${index+1}번째 힌트`}
+                                onChange={e => onChange(e, index)}
+                                required
+                            />
+                        ))}
+                        </InputWrap>
+                        <ErrorText>{errorText}</ErrorText>
                     </form>
-                    <StyledButton fullwidth indigo onClick={onClickNextQuiz}>
-                        다음문제
-                    </StyledButton>
                     {isDialogOpen && 
                         <Dialog isOpen={isDialogOpen} onClose={isDialogClick[0]}
                             title="퀴즈 작성을 완료하시겠습니까?"
@@ -245,14 +147,11 @@ const QuizForm = ({ step, form, data, quizCount, selectNumber, cho_hangul,
                             계속 진행하시려면 '확인'을 선택하세요.
                         </Dialog>
                     }
-                </div>
+                </>
             )}
             {step === "step3" && (
                 <>
-                    <QuizDetailList type="make" form={form} cho_hangul={cho_hangul} />
-                    <StyledButton fullwidth indigo onClick={onClick[1]}>
-                        문제완성
-                    </StyledButton>
+                    <QuizDetailList type="make" form={form} />
                     {isOpen &&
                         <ModalForm isOpen={isOpen} title="퀴즈 완성">
                             <div style={{ textAlign: 'center' }}>
@@ -263,22 +162,10 @@ const QuizForm = ({ step, form, data, quizCount, selectNumber, cho_hangul,
                     }
                 </>
             )}
-            {step === "step1" && (
-                <div className="move-button-area">
-                    <StyledButton medium white
-                        onClick={onClick[0]}
-                    >
-                        {step === "step1" ? "취 소" : "이 전"}
-                    </StyledButton>
-                    <StyledButton medium
-                        onClick={onClick[1]}
-                    >
-                        {step === "step3" ? "완 성" : "다 음"}
-                    </StyledButton>
-                </div>
-            )}
+            <StyledButton fullwidth indigo onClick={onClick}>
+                {step === "step1" ? "다 음" : (step === "step2" ? "다 음 문 제" : "문 제 완 성")}
+            </StyledButton>
         </QuizFormBlock>
-        
     );
 };
 

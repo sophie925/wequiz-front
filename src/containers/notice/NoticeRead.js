@@ -18,7 +18,7 @@ const NoticeRead = () => {
 
     useEffect(() => {
         if (form && form.status === 200) {
-            console.log("공지사항 상세조회 성공", form);
+            // console.log("공지사항 상세조회 성공", form);
         }
     }, [form]);
 

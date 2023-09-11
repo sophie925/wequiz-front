@@ -40,7 +40,7 @@ const MyInfoForm = () => {
             console.log("회원탈퇴 실패", authError);
         }
         if (auth) {
-            console.log("회원탈퇴 성공", auth);
+            // console.log("회원탈퇴 성공", auth);
             handleModalOpen();
         }
     }, [auth, authError]);

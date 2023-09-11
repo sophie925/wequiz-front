@@ -1,7 +1,8 @@
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdOutlineHorizontalRule } from "react-icons/md";
-import { StateCheckIcon, DropDownBlock, DropDownBtn, DropDownContent, DropDownItem, QuizListTitleBlock, QuizListWrap, StateRunningIcon, StateItem, TagBlock, CategoryBoxItem, SortItem, SelectIcon } from "../../components/quiz/QuizSolveElements";
+import { StateCheckIcon, DropDownBlock, DropDownBtn, DropDownContent, DropDownItem, QuizListTitleBlock, QuizListWrap, StateRunningIcon, StateItem, TagBlock, CategoryBoxItem, SortItem, SelectIcon, LoadingWrap } from "../../styles/quiz/QuizSolveElements";
 import QuizListContainer from "./QuizListContainer";
 import Tag from "../../components/common/Tag";
+import Loading02 from "../../components/common/Loading02";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../modules/category";
@@ -23,7 +24,6 @@ const SolveQuizStep01 = () => {
     const [loading, setLoading] = useState(false);
     const [cateList, setCateList] = useState([]);
     const [checkList, setCheckList] = useState([]);
-    const [state, setState] = useState("");
     const [stateItem, setStateItem] = useState([]);
     const [sort, setSort] = useState("RECENCY");
     const [tagList, setTagList] = useState([]);
@@ -32,27 +32,25 @@ const SolveQuizStep01 = () => {
         // 초기화
         setPage(1);
         setQuizData([]);
+        setLoading(false);
     };
-
-    useEffect(() => {
-        dispatch(solveReset());
-        dispatch(quizReset());
-    }, [dispatch]);
 
     // 카테고리 조회
     useEffect(() => {
         resetData();
+        dispatch(solveReset());
+        dispatch(quizReset());
         dispatch(getCategories());
     }, [dispatch]);
 
     // 카테고리 조회 성공/실패 처리
     useEffect(() => {
         if (form && form.status === 200) {
-            console.log("카테고리 조회 성공: ", form, page);
+            // console.log("카테고리 조회 성공: ", form, page, loading);
             setCategories(form.data.data);
-            dispatch(getListQuizPapers({ page: page, size: 5, category: cateList, status: state, sort: sort }));
+            dispatch(getListQuizPapers({ page: page, size: 5, category: cateList, status: stateItem[0], sort: sort }));
         }
-    }, [form, dispatch, page, cateList, state, sort]);
+    }, [form, dispatch, page, cateList, stateItem, sort]);
 
     // 무한스크롤 적용
     const pageEnd = useRef(null);
@@ -75,14 +73,13 @@ const SolveQuizStep01 = () => {
     // 퀴즈 목록(new) 조회 api 호출 후 로직
     useEffect(() => {
         if (form2 && form2.status === 200) {
-            console.log("퀴즈 목록(new) 조회 성공", form2);
+            // console.log("퀴즈 목록(new) 조회 성공", form2);
             const { pagination, quizPapers } = form2?.data.data;
             setLoading(false);
             setPagination(pagination);
-            console.log(loading);
             if (page < pagination.totalPages) {
                 setQuizData((prev) => [...prev, ...quizPapers]);
-                setLoading(true);
+                setTimeout(() => setLoading(true), 1000);
             } else {
                 if (quizPapers.length === 0) {
                     setQuizData([]);
@@ -119,13 +116,10 @@ const SolveQuizStep01 = () => {
         resetData();
         if (type === "state") {
             const { id, innerText } = e.target;
-            setState(id);
             setStateItem([id, innerText]);
             submitStateTagItem(innerText);
-            dispatch(getListQuizPapers({ page: page, size: 5, category: cateList, status: id, sort: sort }));
             setIsStateOpen(false);
         } else if (type === "category") {
-            console.log(e);
             const { category, categoryDisplay } = e;
             let updatedCateList = [...cateList];
             if (cateList.includes(category)) {
@@ -135,12 +129,10 @@ const SolveQuizStep01 = () => {
                 updatedCateList.push(category);
                 setCateList(updatedCateList);
             }
-            dispatch(getListQuizPapers({ page: page, size: 5, category: updatedCateList, status: state, sort: sort }));
             submitCateTagItem(categoryDisplay);
         } else if (type === "sort") {
             const { id } = e.target;
             setSort(id);
-            dispatch(getListQuizPapers({ page: page, size: 5, category: cateList, status: state, sort: id }));
             setIsShow(false);
         }
     };
@@ -187,13 +179,10 @@ const SolveQuizStep01 = () => {
             const findIdx = categories.findIndex((v) => v.categoryDisplay === item);
             let filteredCateList = cateList.filter(cateItem => cateItem !== categories[findIdx].category);
             setCateList(filteredCateList);
-            dispatch(getListQuizPapers({ page: page, size: 5, category: filteredCateList, status: state, sort: sort }));
         }
         // state 인 경우
         else {
-            setState('');
             setStateItem([]);
-            dispatch(getListQuizPapers({ page: page, size: 5, category: cateList, status: '', sort: sort }));
         }
     };
 
@@ -202,7 +191,6 @@ const SolveQuizStep01 = () => {
         const deleteTagItem = e.target.parentElement.firstChild.innerText;
         const filteredTagList = tagList.filter(tagItem => tagItem !== deleteTagItem);
         setTagList(filteredTagList);
-
         checkCate("D", deleteTagItem);
         findBoxItem(deleteTagItem);
     };
@@ -260,7 +248,11 @@ const SolveQuizStep01 = () => {
                     type="solve"
                     form={quizData}
                 />
-                {loading && <p ref={pageEnd}>loading</p>}
+                {loading && (
+                    <LoadingWrap ref={pageEnd}>
+                        <Loading02 />
+                    </LoadingWrap>
+                )}
             </QuizListWrap>
         </>
     );

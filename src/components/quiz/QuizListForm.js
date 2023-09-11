@@ -1,5 +1,4 @@
-import { QuizFormBlock } from "./QuizElements";
-import { EmptyMessage } from "./QuizListElements";
+import { EmptyMessage } from "../../styles/quiz/QuizListElements";
 import QuizList from "./QuizList";
 
 const textMap = {
@@ -11,7 +10,7 @@ const textMap = {
 
 const QuizListForm = ({ type, form, onClickShare, onClickBookmark, onClickLikeMark, onClick }) => {
     return (
-        <QuizFormBlock>
+        <>
             {form && (
                 form.length === 0 ? (
                     <EmptyMessage>{textMap[type]}</EmptyMessage>
@@ -26,7 +25,7 @@ const QuizListForm = ({ type, form, onClickShare, onClickBookmark, onClickLikeMa
                     />
                 )
             )}
-        </QuizFormBlock>
+        </>
     );
 };
 

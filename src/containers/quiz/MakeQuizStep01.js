@@ -1,7 +1,7 @@
+import QuizForm from "../../components/quiz/QuizForm";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import QuizForm from "../../components/quiz/QuizForm";
 import { getCategories } from "../../modules/category";
 import { updateData } from "../../modules/quiz";
 
@@ -11,15 +11,15 @@ const MakeQuizStep01 = () => {
     const { form } = useSelector(({ category }) => ({
         form: category.status,
     }));
-    
-    const [data, setData] = useState({
-        category: '',
-        quizCount: 1,
-        accessibility: 'PUBLIC',
-        title: '',
-        description: '',
-    });
-       
+    const { data } = useSelector(({ quiz }) => ({
+        data: quiz.make,
+    }));
+
+    // 카테고리 종류 보여주는 모달
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const handleModalOpen = () => setIsModalOpen(true);
+    const handleModalClose = () => setIsModalOpen(false);
+
     // 컴포넌트가 처음 렌더링될 때 form을 초기화함
     useEffect(() => {
         dispatch(getCategories());
@@ -28,59 +28,46 @@ const MakeQuizStep01 = () => {
     // 카테고리 조회 성공/실패 처리
     useEffect(() => {
         if (form && form.status === 200) {
-            console.log("카테고리 조회 성공: ", form);
-            // dispatch(initializeForm('make'));
+            // console.log("카테고리 조회 성공: ", form);
         }
     }, [form]);
 
+    // 카테고리 선택 버튼 클릭 시
     const onCateClick = e => {
         const { name, value, innerText } = e.target;
-        console.log(name, ":", value);
-        setData({
-            ...data,
-            [name]: value,
-            categoryDispaly: innerText,
-        });
+        dispatch(updateData({
+            form: 'make',
+            data: {
+                ...data,
+                [name]: value,
+                categoryDispaly: innerText,
+            }
+        }));
         handleModalClose();
     };
     
-    const onChange = e => {
-        const { name, value, min, max } = e.target;
-        console.log(name, ":", value);
+    const onChange = (e, type) => {
+        const { value, min, max } = e.target;
+        const name = type ? type : e.target.name;
         if (name === "quizCount" && value !== "") {
             if (Number(value) < min || Number(value) > max) {
                 alert("퀴즈 개수는 1-10개만 입력가능합니다.");
-                setData({
-                    ...data,
-                    [name]: ''
-                });
+                dispatch(updateData({
+                    form: 'make',
+                    data: { ...data, [name]: '' }
+                }));
                 return;
             }
         }
-        setData({
-            ...data,
-            [name]: name === "quizCount"? Number(value) : value
-        });
-    };
-
-    const onSelectChange = (e, type) => {
-        const value = e.target.value;
-        console.log(type, ":", value);
-        setData({
-            ...data,
-            [type]: value
-        });
+        dispatch(updateData({
+            form: 'make',
+            data: { ...data, [name]: name === "quizCount"? Number(value) : value }
+        }));
     };
     
-    const onPrevClickHandle = e => {
-        if (window.confirm('홈 화면으로 이동하시겠습니까?')) {
-            navigate('/');
-        }
-    };
-    
-    const onNextClickHandle = e => {
+    // 다음 클릭 시
+    const onClick = e => {
         const { category, title, quizCount } = data;
-        const newData = { ...data };
         // 하나라도 비어 있다면
         if ([category, title].includes('')) {
             alert('퀴즈제목, 카테고리를 확인해주세요.');
@@ -91,27 +78,19 @@ const MakeQuizStep01 = () => {
             alert("퀴즈 개수를 확인해주세요.");
             return;
         }
-        console.log(newData);
-        dispatch(updateData({ form: 'make', data: newData }));
         navigate('/makeStep2');
     };
-
-    // 카테고리 종류 보여주는 모달
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const handleModalOpen = () => setIsModalOpen(true);
-    const handleModalClose = () => setIsModalOpen(false);
 
     return (
         <QuizForm
             step="step1"
             form={form}
             data={data}
+            onChange={onChange}
             isModalOpen={isModalOpen}
             onMadalClick={[handleModalOpen, handleModalClose]}
             onCateClick={onCateClick}
-            onChange={onChange}
-            onSelectChange={onSelectChange}
-            onClick={[onPrevClickHandle, onNextClickHandle]}
+            onClick={onClick}
         />
     );
 };

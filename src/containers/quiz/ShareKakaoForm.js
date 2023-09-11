@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import kakaoImg from "../../assets/images/icon-kakao.png";
-import { ShareKakao, ShareKakaoUrl } from "../../utils/ShareKakaoLink";
+import { shareKakao, shareKakaoUrl } from "../../utils/ShareKakaoLink";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -50,7 +50,7 @@ const ShareKaKaoForm = ({ data }) => {
 
     return (
         <ShareFormBlock>
-            <ShareBtnWrap onClick={() => ShareKakao(hiddenUrl)}>
+            <ShareBtnWrap onClick={() => shareKakao(hiddenUrl)}>
                 <img src={kakaoImg} alt="카카오 공유하기 아이콘" />
                 <span>카카오톡</span>
             </ShareBtnWrap>
@@ -61,7 +61,7 @@ const ShareKaKaoForm = ({ data }) => {
                     ref={textInput}
                     readOnly 
                 />
-                <button onClick={() => ShareKakaoUrl(textInput.current.value)}>복사</button>
+                <button onClick={() => shareKakaoUrl(textInput.current.value)}>복사</button>
             </ShareUrlWrap>
         </ShareFormBlock>
     );

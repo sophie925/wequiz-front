@@ -11,7 +11,7 @@ export const getCategories = createAction(GETCATEGORY);
 // 사가 생성
 const getCategoriesSaga = createRequestSaga(GETCATEGORY, categoryAPI.getCategories);
 export function* categorySaga() {
-    console.log("category saga success");
+    // console.log("category saga success");
 
     yield takeLatest(GETCATEGORY, getCategoriesSaga);
 }

@@ -1,7 +1,7 @@
-import { MoblieIcon, NavBtn, NavBtnLink, NavItem, NavLinks, NavLogo, NavMenu, Nav, NavbarContainer, UserIconLink } from "./NavbarElements";
 import { FaBars, FaUserCircle } from "react-icons/fa"
+import { MoblieIcon, NavBtn, NavBtnLink, NavItem, NavLinks, NavLogo, NavMenu, Nav, NavbarContainer, UserIconLink } from "../../styles/common/NavbarElements";
 
-const Navbar = ({ user, toggle }) => {
+const Navbar = ({ user, toggle, onClick }) => {
     return (
         <div>
             <Nav>
@@ -14,10 +14,10 @@ const Navbar = ({ user, toggle }) => {
                     </MoblieIcon>
                     <NavMenu>
                         <NavItem>
-                            <NavLinks to="/solve">퀴즈풀기</NavLinks>
+                            <NavLinks onClick={() => onClick("/solve")}>퀴즈풀기</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="/make">퀴즈만들기</NavLinks>
+                            <NavLinks onClick={() => onClick("/make")}>퀴즈만들기</NavLinks>
                         </NavItem>
                     </NavMenu>
                     <NavBtn>

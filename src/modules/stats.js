@@ -14,7 +14,7 @@ export const getMemberStats = createAction(GETMEMBERSTATS);
 // 사가 생성
 const getMemberStatsSaga = createRequestSaga(GETMEMBERSTATS, statsAPI.getMemberStats);
 export function* statsSaga() {
-    console.log("stats saga success");
+    // console.log("stats saga success");
 
     yield takeLatest(GETMEMBERSTATS, getMemberStatsSaga);
 }

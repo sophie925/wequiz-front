@@ -1,7 +1,8 @@
+import AuthOtherForm from "../../components/auth/AuthOtherForm";
+import { checkPassword } from "../../utils/CheckValidation";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import AuthOtherForm from "../../components/auth/AuthOtherForm";
 import { authReset, changeField, resetPassword } from "../../modules/auth";
 
 const ResetPasswordForm = () => {
@@ -19,12 +20,23 @@ const ResetPasswordForm = () => {
         return new URLSearchParams(window.location.search).get(key);
     };
 
+    // 비밀번호 변경 확인안내용 모달
+    const [isOpen, setIsOpen] = useState(false);
+    const handleOpen = () => {
+        dispatch(changeField({ form: 'reset', key: 'email', value: '' }));
+        setIsOpen(true);
+    };
+    const handleClose = () => {
+        setIsOpen(false);
+        navigate("/login");
+    };
+
     const onChange = e => {
         const { name, value } = e.target;
         setErrorText('');
         if (name === "newPassword") {
-            if (!verificationPassword(value)) {
-                setErrorText('영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.');
+            if(!checkPassword(value)) {
+                setErrorText('영문 대·소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 15자 이하로 입력해주세요.');
             }
         }
         dispatch(
@@ -36,25 +48,13 @@ const ResetPasswordForm = () => {
         );
     };
 
-    // 비밀번호 유효성 검증
-    const verificationPassword = (password) => {
-        // let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
-        let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
-
-        if (mediumPassword.test(password)) {
-            console.log("통과",password);
-            return true;
-        }
-        return false;
-    };
-
     // 저장하기 버튼 클릭
     const onSubmit = e => {
         e.preventDefault();
-        let email = getParamter("email");
-        let authKey = getParamter("authKey");
+        const email = getParamter("email");
+        const authKey = getParamter("authKey");
         const { newPassword, newPasswordConfirm } = form;
-        console.log(authKey, email, newPassword, newPasswordConfirm);
+                
         // 하나라도 비어 있다면
         if ([newPassword, newPasswordConfirm].includes('')) {
             setErrorText('비밀번호를 모두 입력해주세요.');
@@ -76,10 +76,10 @@ const ResetPasswordForm = () => {
             console.log("재설정 실패", authError);
         }
         if (auth) {
-            console.log("재설정 성공", auth);
+            // console.log("재설정 성공", auth);
             setErrorText('');
             dispatch(authReset());
-            navigate("/login");
+            handleOpen();
         }
     }, [auth, authError, dispatch, navigate]);
 
@@ -87,6 +87,8 @@ const ResetPasswordForm = () => {
         <AuthOtherForm
             type="reset"
             errorText={errorText}
+            isOpen={isOpen}
+            handleClose={handleClose}
             onChange={onChange}
             onSubmit={onSubmit}
         />

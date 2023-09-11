@@ -1,5 +1,7 @@
 import { MdClose } from 'react-icons/md'
-import { CloseBtn, PolicyPageBlock, PolicyWrap, TitleBlock, TopBlock, TopEndBlock, TopFrontBlock } from "./PolicyElements";
+import { CloseBtn, PolicyPageBlock, PolicyWrap, TopBlock } from "../../styles/policy/PolicyElements";
+import { CommonTopEndBlock, CommonTopFrontBlock, CommonTopTitle } from '../../styles/common/CommonElements';
+import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 
 const titleMap = {
     terms: '이용약관',
@@ -7,21 +9,19 @@ const titleMap = {
 }
 
 const PolicyTemplate = ({ type, children }) => {
+    const navigate = useNavigate();
     const title = titleMap[type];
-    const onClick = e => {
-        window.location = "/";
-    }
     return (
         <PolicyPageBlock>
             <PolicyWrap>
                 <TopBlock>
-                    <TopFrontBlock />
-                    <TitleBlock>{title}</TitleBlock>
-                    <TopEndBlock>
-                        <CloseBtn onClick={onClick}>
+                    <CommonTopFrontBlock />
+                    <CommonTopTitle>{title}</CommonTopTitle>
+                    <CommonTopEndBlock>
+                        <CloseBtn onClick={() => navigate("/")}>
                             <MdClose />
                         </CloseBtn>
-                    </TopEndBlock>
+                    </CommonTopEndBlock>
                 </TopBlock>
                 {children}
             </PolicyWrap>

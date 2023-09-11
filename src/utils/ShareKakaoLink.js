@@ -1,4 +1,4 @@
-export const ShareKakao = (url) => {
+export const shareKakao = (url) => {
     if (window.Kakao) {
         const kakao = window.Kakao;
 
@@ -16,7 +16,7 @@ export const ShareKakao = (url) => {
     }
 };
 
-export const ShareKakaoUrl = async (url) => {
+export const shareKakaoUrl = async (url) => {
     try {
         await navigator.clipboard.writeText(url);
         alert("링크가 복사되었어요.");

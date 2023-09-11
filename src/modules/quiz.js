@@ -64,7 +64,7 @@ const mineSaga = createRequestSaga(MINE, quizAPI.mine);
 const getListBookmarkedSaga = createRequestSaga(GETLISTBOOKMARKED, quizAPI.getListBookmarked);
 const getStartedQuizSaga = createRequestSaga(GETSTARTEDQUIZ, quizAPI.getStartedQuiz);
 export function* quizSaga() {
-    console.log("quiz saga success");
+    // console.log("quiz saga success");
 
     yield takeLatest(MAKE, makeSaga);
     yield takeLatest(CHECKSOLVINGSTATE, checkSolvingStateSaga);

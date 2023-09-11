@@ -35,7 +35,7 @@ const NoticeWrite = () => {
 
     useEffect(() => {
         if (result && result.status === 200) {
-            console.log("공지사항 등록 성공:", result);
+            // console.log("공지사항 등록 성공:", result);
             navigate('/notice');
             dispatch(noticeReset());
         }

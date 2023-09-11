@@ -17,7 +17,7 @@ const MyQuizList = () => {
 
     useEffect(() => {
         if (form && form.status === 200) {
-            console.log("내 퀴즈 조회 성공:", form)
+            // console.log("내 퀴즈 조회 성공:", form)
             setQuizData(form.data.data);
         }
     }, [form]);

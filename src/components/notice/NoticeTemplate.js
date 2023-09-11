@@ -1,24 +1,25 @@
-import { NoticeBackLink, NoticeBlock, NoticeContentBlock, NoticeTopBlock, NoticeTopEndBlock, NoticeTopFrontBlock, NoticeTopTitle, NoticeWrapper } from "./NoticeElements";
 import { MdKeyboardBackspace } from "react-icons/md";
+import { NoticeBlock, NoticeWrapper } from "../../styles/notice/NoticeElements";
+import { CommonTopBackLink, CommonTopBlock, CommonTopEndBlock, CommonTopFrontBlock, CommonTopTitle } from "../../styles/common/CommonElements";
+import { useNavigate } from "react-router-dom";
 
 const NoticeTemplate = ({ type, children }) => {
+    const navigate = useNavigate();
     return (
         <NoticeBlock>
             <NoticeWrapper>
-                <NoticeTopBlock>
-                    <NoticeTopFrontBlock>
+                <CommonTopBlock>
+                    <CommonTopFrontBlock isCheck={true}>
                         {type === "main" && (
-                            <NoticeBackLink to="/mypage">
+                            <CommonTopBackLink onClick={() => navigate("/mypage")}>
                                 <MdKeyboardBackspace />
-                            </NoticeBackLink>
+                            </CommonTopBackLink>
                         ) }
-                    </NoticeTopFrontBlock>
-                    <NoticeTopTitle>공지사항</NoticeTopTitle>
-                    <NoticeTopEndBlock />
-                </NoticeTopBlock>
-                <NoticeContentBlock>
-                    {children}
-                </NoticeContentBlock>
+                    </CommonTopFrontBlock>
+                    <CommonTopTitle>공지사항</CommonTopTitle>
+                    <CommonTopEndBlock />
+                </CommonTopBlock>
+                {children}
             </NoticeWrapper>
         </NoticeBlock>
     );

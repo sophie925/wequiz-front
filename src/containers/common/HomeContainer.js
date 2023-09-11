@@ -30,7 +30,7 @@ const HomeContainer = () => {
     // 최근 진행중인 퀴즈 api 호출 후 로직
     useEffect(() => {
         if (result && result.status === 200) {
-            console.log("최근 진행중인 퀴즈 조회 성공", result);
+            // console.log("최근 진행중인 퀴즈 조회 성공", result);
             setQuizData(result.data.data?.quizPapers);
         }
     }, [result, dispatch]);
@@ -38,7 +38,7 @@ const HomeContainer = () => {
     // 퀴즈 목록 조회(new) api 호출 후 로직
     useEffect(() => {
         if (result2 && result2.status === 200) {
-            console.log("퀴즈 목록 조회 성공", result2);
+            // console.log("퀴즈 목록 조회 성공", result2);
             setQuizList(result2.data.data?.quizPapers);
             dispatch(solveReset());
         }

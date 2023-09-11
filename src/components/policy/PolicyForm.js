@@ -1,4 +1,4 @@
-import { ContentBlock } from "./PolicyElements";
+import { ContentBlock } from "../../styles/policy/PolicyElements";
 
 const PolicyForm = ({ type }) => {
     return (

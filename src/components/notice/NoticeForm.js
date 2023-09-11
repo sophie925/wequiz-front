@@ -1,11 +1,11 @@
+import { NoticeBottomWrap, NoticeButtonWrap, NoticeContentBlock, NoticeDate, NoticeLi, NoticeLink, NoticeNoneLi, NoticeReadContent, NoticeReadTitle, NoticeReadTitleWrap, NoticeTitle, NoticeUl, NoticeWrap, NoticeWriteItem } from "../../styles/notice/NoticeElements";
 import Button from "../common/Button";
-import { NoticeBottomWrap, NoticeButtonWrap, NoticeDate, NoticeLi, NoticeLink, NoticeNoneLi, NoticeReadContent, NoticeReadTitle, NoticeReadTitleWrap, NoticeTitle, NoticeUl, NoticeWrap, NoticeWriteItem } from "./NoticeElements";
 import dayjs from  "dayjs";
 
 const NoticeForm = ({ type, form, onChange, onClick, onSubmit, onWrite }) => {
     const username = localStorage.getItem('username');
     return (
-        <>
+        <NoticeContentBlock>
             {type === "list" && (
                 <>
                     {username === "어드민" ? (
@@ -79,7 +79,7 @@ const NoticeForm = ({ type, form, onChange, onClick, onSubmit, onWrite }) => {
                     </form>
                 </NoticeWrap>
             )}
-        </>
+        </NoticeContentBlock>
     );
 };
 

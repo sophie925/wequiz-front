@@ -1,8 +1,9 @@
+import AuthOtherForm from "../../components/auth/AuthOtherForm";
+import { checkPassword } from "../../utils/CheckValidation";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from "react-router-dom";
 import { changeField, initializeForm, create } from "../../modules/auth";
-import AuthOtherForm from "../../components/auth/AuthOtherForm";
 
 const CrerateAccountForm = () => {
     const dispatch = useDispatch();
@@ -52,13 +53,11 @@ const CrerateAccountForm = () => {
 
     const onChange = e => {
         const { value, name } = e.target;
-        if (value !== '') {
-            setErrorText("");
-        }
+        setErrorText("");
         if (name === "password") {
             setErrorText('');
-            if (!verificationPassword(value)) {
-                setErrorText('영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.');
+            if (!checkPassword(value)) {
+                setErrorText('영어 대·소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 15자 이하로 입력해주세요.');
             }
         }
         dispatch(
@@ -70,18 +69,7 @@ const CrerateAccountForm = () => {
             })
         );
     };
-
-    // 비밀번호 유효성 검증
-    const verificationPassword = (password) => {
-        let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
-
-        if (mediumPassword.test(password)) {
-            console.log("통과",password);
-            return true;
-        }
-        return false;
-    };
-
+    
     // 계정 생성 버튼 클릭시
     const onSubmit = e => {
         e.preventDefault(); 
@@ -110,7 +98,7 @@ const CrerateAccountForm = () => {
             console.log("오류 발생: ", authError);
         } 
         if (auth && auth.status === 201) {
-            console.log("회원가입 성공: ", auth);
+            // console.log("회원가입 성공: ", auth);
             setErrorText("");
             navigate("/login");
         }

@@ -18,14 +18,13 @@ const Notice = () => {
 
     useEffect(() => {
         if (form && form.status === 200) {
-            console.log("공지사항 목록 조회 성공", form);
+            // console.log("공지사항 목록 조회 성공", form);
         }
     }, [form]);
 
     const onClick = value => {
         dispatch(noticeReset());
         const { id } = value;
-        console.log(id);
         dispatch(updateData({ form: 'read', data: { id: id } }));
         navigate("/read");
     };

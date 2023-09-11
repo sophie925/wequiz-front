@@ -14,7 +14,7 @@ export const setLikeMark = createAction(SETLIKEMARK, quizPaperId => quizPaperId)
 // 사가 생성
 const setLikeMarkSaga = createRequestSaga(SETLIKEMARK, likeMarkAPI.setLikeMark);
 export function* likeMarkSaga() {
-    console.log("likeMark saga success");
+    // console.log("likeMark saga success");
 
     yield takeLatest(SETLIKEMARK, setLikeMarkSaga);
 }

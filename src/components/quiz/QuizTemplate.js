@@ -1,5 +1,8 @@
 import { MdKeyboardBackspace } from 'react-icons/md';
-import { QuizBackLink, QuizContentBlock, QuizTemplateBlock, QuizTitle, QuizTopBlock, QuizTopEndBlock, QuizTopFrontBlock } from './QuizElements';
+import Dialog from '../common/Dialog';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CommonBlock, CommonTopBackLink, CommonTopBlock, CommonTopEndBlock, CommonTopFrontBlock, CommonTopTitle, CommonWrapper } from '../../styles/common/CommonElements';
 
 /**
  * 퀴즈 만들기/풀기 등 페이지의 레이아웃을 담당하는 컴포넌트
@@ -22,10 +25,9 @@ const linkMap = {
     solve: {
         step1: '/',
         step2: '/solve',
-        step3: '/solveStep2'
     },
     mine: {
-        step1: '/',
+        step1: '/mypage',
         step2: '/mine',
     },
     bookmark: {
@@ -35,24 +37,50 @@ const linkMap = {
 };
 
 const QuizTemplate = ({ type, step, children }) => {
+    const navigate = useNavigate();
     const title = titleMap[type];
+
+    // 퀴즈 풀기/만들기 화면 나가기 전 안내용 팝업
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const handleDialogOpen = () => setIsDialogOpen(true);
+    const handleDialogClose = () => setIsDialogOpen(false);
+
+    const dialogTitleText = `퀴즈 ${type === "make" ? "작성을" : "풀기를"} 그만하시겠습니까?`;
+
+    // 뒤로가기 클릭 시
+    const onClickBack = (link) => {
+        if ((link === '/' && type === 'make') || link === '/solve') {
+            handleDialogOpen();
+        } else {
+            navigate(link);
+        }
+    };
     return (
-        <QuizTemplateBlock>
-            <QuizContentBlock>
-                <QuizTopBlock>
-                    <QuizTopFrontBlock>
-                        {type !== "result" && (
-                            <QuizBackLink to={linkMap[type][step]}>
-                                <MdKeyboardBackspace />
-                            </QuizBackLink>
-                        )}
-                    </QuizTopFrontBlock>
-                    <QuizTitle>{title}</QuizTitle>
-                    <QuizTopEndBlock />
-                </QuizTopBlock>
+        <CommonBlock>
+            <CommonWrapper>
+                <CommonTopBlock>
+                    <CommonTopFrontBlock>
+                    {type !== "result" && (
+                        <CommonTopBackLink onClick={() => onClickBack(linkMap[type][step])}>
+                            <MdKeyboardBackspace />
+                        </CommonTopBackLink>
+                    )}
+                    </CommonTopFrontBlock>
+                    <CommonTopTitle>{title}</CommonTopTitle>
+                    <CommonTopEndBlock />
+                </CommonTopBlock>
                 {children}
-            </QuizContentBlock>
-        </QuizTemplateBlock>
+            </CommonWrapper>
+            {isDialogOpen &&
+                <Dialog isOpen={isDialogOpen} onClose={handleDialogClose}
+                    title={dialogTitleText}
+                    before={{ onClick: handleDialogClose }}
+                    after={{ onClick: () => navigate('/') }}
+                >
+                    '확인'을 선택하시면 홈 화면으로 이동합니다.
+                </Dialog>
+            }
+        </CommonBlock>
     );
 };
 

@@ -1,18 +1,19 @@
 import { Checkbox, FormControlLabel } from "../../../node_modules/@mui/material/index";
+import { CheckboxWrap, HrStyle } from "../../styles/auth/AuthOtherElements";
+import { ErrorText, InputWrap } from "../../styles/common/CommonElements";
 import Button from "../common/Button";
-import { AuthOtherInputWrap, CheckboxWrap, HrStyle } from "./AuthOtherElements";
-import { ErrorText } from "./UserInfoElement";
+import ModalForm from "../common/ModalForm";
 
 /**
  * 계정 생성 또는 이메일 전송 또는 비밀번호 재설정 폼을 보여줌
  */
 
-const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onChangeAllCheck, onChange, onSubmit }) => {
+const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onChangeAllCheck, isOpen, handleClose, onChange, onSubmit }) => {
     return (
         <form onSubmit={onSubmit} noValidate>
             {type === "create" && (
                 <>
-                    <AuthOtherInputWrap>
+                    <InputWrap>
                         <label>이름</label>
                         <input
                             type="text"
@@ -21,8 +22,8 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
                             placeholder="이름을 입력해주세요."
                             required
                         />
-                    </AuthOtherInputWrap>
-                    <AuthOtherInputWrap>
+                    </InputWrap>
+                    <InputWrap>
                      <label>비밀번호</label>
                         <input
                             type="password"
@@ -31,8 +32,8 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
                             placeholder="비밀번호를 입력해주세요."
                             required
                         />
-                    </AuthOtherInputWrap>
-                    <AuthOtherInputWrap>
+                    </InputWrap>
+                    <InputWrap>
                         <input
                             type="password"
                             name="passwordConfirm"
@@ -40,7 +41,7 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
                             placeholder="비밀번호를 다시 한번 입력해주세요."
                             required
                         />
-                    </AuthOtherInputWrap>
+                    </InputWrap>
                     <ErrorText>{errorText}</ErrorText>
                     <CheckboxWrap>
                         <FormControlLabel
@@ -73,7 +74,7 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
             )}
             {type === "send" && (
                 <>
-                    <AuthOtherInputWrap>
+                    <InputWrap>
                         <label>비밀번호를 재설정 할 이메일</label>
                         <input
                             type="email"
@@ -82,14 +83,24 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
                             placeholder="이메일을 입력해주세요."
                             required
                         />
-                    </AuthOtherInputWrap>
+                    </InputWrap>
                     <ErrorText>{errorText}</ErrorText>
                     <Button fullwidth indigo>이메일 전송</Button>
+                    {isOpen &&
+                        <ModalForm isOpen={isOpen} title="안내 메세지">
+                            <div style={{ textAlign: 'center' }}>
+                                <p>작성한 Email 주소로 메일을 전송했습니다.</p>
+                                <p>확인하시고 비밀번호를 변경해주세요.</p>
+                                <p  style={{ fontSize: '15px', color: '#868e96', fontWeight: 'bold', margin: '30px 0' }}>* 메일이 도착하지 않으신 경우 스팸메일함도 확인해주세요.</p>
+                                <Button medium onClick={handleClose}>확인</Button>
+                            </div>
+                        </ModalForm>
+                    }
                 </>
             )}
             {type === "reset" && (
                 <>
-                    <AuthOtherInputWrap>
+                    <InputWrap>
                         <label>새 비밀번호</label>
                         <input
                             type="password"
@@ -98,8 +109,8 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
                             placeholder="새 비밀번호를 입력해주세요."
                             required
                         />
-                    </AuthOtherInputWrap>
-                    <AuthOtherInputWrap>
+                    </InputWrap>
+                    <InputWrap>
                         <input
                             type="password"
                             name="newPasswordConfirm"
@@ -107,9 +118,18 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
                             placeholder="새 비밀번호를 다시 한번 입력해주세요."
                             required
                         />
-                    </AuthOtherInputWrap>
+                    </InputWrap>
                     <ErrorText>{errorText}</ErrorText>
                     <Button fullwidth indigo>저장</Button>
+                    {isOpen &&
+                        <ModalForm isOpen={isOpen} title="안내 메세지">
+                            <div style={{ textAlign: 'center' }}>
+                                <p>비밀번호 재설정이 완료되었습니다.</p>
+                                <p style={{ marginBottom: '30px' }}>다시 로그인 해주세요.</p>
+                                <Button medium onClick={handleClose}>확인</Button>
+                            </div>
+                        </ModalForm>
+                    }
                 </>
             )}
         </form>

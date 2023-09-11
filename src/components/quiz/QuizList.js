@@ -1,30 +1,19 @@
 import { MdBookmarkBorder, MdBookmark, MdDone } from "react-icons/md";
 import { RiHeart3Fill, RiHeart3Line } from "react-icons/ri";
 import { BsDot } from "react-icons/bs";
-import { LikeActiveBtn, LikeActiveNum, LikeBtnWrap, QuizListBlock, QuizItemExplain, QuizItemTitle, QuizItemTitleWrap, QuizItemExplain2, IconBlock, ShareBtn, IconBtnWrap, QuizItem } from "./QuizListElements";
+import { LikeActiveBtn, LikeActiveNum, LikeBtnWrap, QuizListBlock, QuizItemExplain, QuizItemTitle, QuizItemTitleWrap, QuizItemExplain2, IconBlock, ShareBtn, IconBtnWrap, QuizItem } from "../../styles/quiz/QuizListElements";
+import { categoryMap } from "../../utils/QuizUtil";
 
-const categoryMap = {
-    GENERAL_KNOWLEDGE: '일반상식',
-    MUSIC: '음악',
-    MOVIE: '영화',
-    TV_SHOW: '드라마/예능',
-    HISTORY: '역사',
-    SCIENCE: '과학',
-    ENTERTAINMENT: '오락',
-    ART: '예술',
-    SOCIAL: '사회',
-    LIVING: '생활/삶',
-    ETC: '기타'
-};
 
 const QuizList = ({ type, form, onClickShare, onClickBookmark, onClickLikeMark, onClick }) => {
     const token = localStorage.getItem('user');
     return(
         <QuizListBlock>
         {form && form.map((value, index) => (
-            <QuizItem key={index} isState={value?.solvingStatus?.toLowerCase()}>
+            <QuizItem key={index} isState={value?.solvingStatus?.toLowerCase()}
+                    onClick={() => onClick(index, value)}>
                 <QuizItemTitleWrap>
-                    <QuizItemTitle onClick={()=> onClick(index, value)}>
+                    <QuizItemTitle>
                         {value?.solvingStatus === "COMPLETED" ? <MdDone /> : ''}
                         {value?.title}
                     </QuizItemTitle>
@@ -32,12 +21,12 @@ const QuizList = ({ type, form, onClickShare, onClickBookmark, onClickLikeMark, 
                         {token && type !== "mine" && (
                             <IconBtnWrap
                                 marked={value?.bookmarked}
-                                onClick={() => onClickBookmark(index, value)}
+                                onClick={e => onClickBookmark(e, index, value)}
                             >
                                 {value?.bookmarked ? <MdBookmark /> : <MdBookmarkBorder />}
                             </IconBtnWrap>
                         )}
-                        <IconBtnWrap onClick={() => onClickShare(value)}>
+                        <IconBtnWrap onClick={e => onClickShare(e, value)}>
                             <ShareBtn />
                         </IconBtnWrap>
                     </IconBlock>
@@ -57,7 +46,7 @@ const QuizList = ({ type, form, onClickShare, onClickBookmark, onClickLikeMark, 
                 ) : (
                     <LikeBtnWrap
                         marked={value?.likeMarked}
-                        onClick={() => onClickLikeMark(index, value)}
+                        onClick={e => onClickLikeMark(e, index, value)}
                     >
                         <LikeActiveBtn>
                             {value?.likeMarked ? <RiHeart3Fill /> : <RiHeart3Line />}

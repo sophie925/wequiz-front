@@ -1,9 +1,9 @@
-import { MdNavigateNext } from "react-icons/md";
-import { ErrorText, InputWrap, LogoutWrap, UserInfoDescription, UserInfoItemBlock, UserInfoPointLabel, UserInfoLi, UserInfoNameLink, UserInfoPointBlock, UserInfoPointText, UserInfoQuickMenuBlock, UserInfoQuickMenuItemLink, UserInfoUl, WithDrawBtn, UserInfoLabel, UserInfoLink, UserInfoQuizState, QuizStatsData, StatsItem, UserInfoContentItemLink } from "./UserInfoElement";
+import { MdNavigateNext, MdBookmarkBorder, MdOutlineTextSnippet } from "react-icons/md";
+import { LogoutWrap, UserInfoDescription, UserInfoItemBlock, UserInfoPointLabel, UserInfoLi, UserInfoNameLink, UserInfoPointBlock, UserInfoPointText, UserInfoQuickMenuBlock, UserInfoQuickMenuItemLink, UserInfoUl, WithDrawBtn, UserInfoLabel, UserInfoLink, UserInfoQuizState, QuizStatsData, StatsItem, UserInfoContentItemLink } from "../../styles/auth/UserInfoElement";
+import { ErrorText, InputWrap } from "../../styles/common/CommonElements";
 import Button from "../common/Button";
 import ModalForm from "../common/ModalForm";
 import Dialog from "../common/Dialog";
-import { MdBookmarkBorder, MdOutlineTextSnippet } from "react-icons/md";
 import DonutGraph from "../common/DonutGraph";
 
 const UserInfoForm = ({ type, form, userName, errorText, onLogout, onWithDraw, onChange, onSubmit,
@@ -42,18 +42,18 @@ const UserInfoForm = ({ type, form, userName, errorText, onLogout, onWithDraw, o
                                     correctRate={form?.data.data?.quizSolvingStats.correctAnswerRate}
                                 />
                                 <QuizStatsData>
-                                        <StatsItem>
-                                            <h4>전체 퀴즈 개수</h4>
-                                            <span>{form?.data.data?.quizSolvingStats.totalQuizPaperCount}</span>
-                                        </StatsItem>
-                                        <StatsItem>
-                                            <h4>맞춘 퀴즈</h4>
-                                            <span>{form?.data.data?.quizSolvingStats.completedQuizPaperCount}</span>
-                                        </StatsItem>
-                                        <StatsItem>
-                                            <h4>내가 만든 퀴즈</h4>
-                                            <span>{form?.data.data?.myQuizStats.myQuizPaperCount}</span>
-                                        </StatsItem>
+                                    <StatsItem>
+                                        <h4>전체 퀴즈 개수</h4>
+                                        <span>{form?.data.data?.quizSolvingStats.totalQuizPaperCount}</span>
+                                    </StatsItem>
+                                    <StatsItem>
+                                        <h4>맞춘 퀴즈</h4>
+                                        <span>{form?.data.data?.quizSolvingStats.completedQuizPaperCount}</span>
+                                    </StatsItem>
+                                    <StatsItem>
+                                        <h4>내가 만든 퀴즈</h4>
+                                        <span>{form?.data.data?.myQuizStats.myQuizPaperCount}</span>
+                                    </StatsItem>
                                 </QuizStatsData>
                             </UserInfoQuizState>
                         </UserInfoItemBlock>

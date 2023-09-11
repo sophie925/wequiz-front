@@ -1,6 +1,6 @@
-import { CloseIcon, Icon, SideBtnWrap, SidebarContainer, SidebarLink, SidebarMenu, SidebarRoute, SidebarWrapper } from "./SidebarElements";
+import { CloseIcon, Icon, SideBtnWrap, SidebarContainer, SidebarLink, SidebarMenu, SidebarRoute, SidebarWrapper } from "../../styles/common/SidebarElements";
 
-const Sidebar = ({isOpen, user, onLogout, toggle}) => {
+const Sidebar = ({isOpen, user, onLogout, toggle, onClick }) => {
     return (
         <SidebarContainer isOpen={isOpen} onClick={toggle}>
             <Icon>
@@ -8,13 +8,13 @@ const Sidebar = ({isOpen, user, onLogout, toggle}) => {
             </Icon>
             <SidebarWrapper>
                 <SidebarMenu>
-                    <SidebarLink to="/" onClick={toggle}>홈</SidebarLink>
-                    <SidebarLink to="/solve" onClick={toggle}>퀴즈풀기</SidebarLink>
-                    <SidebarLink to="/make" onClick={toggle}>퀴즈만들기</SidebarLink>
+                    <SidebarLink onClick={() => onClick('/')}>홈</SidebarLink>
+                    <SidebarLink onClick={() => onClick('/solve')}>퀴즈풀기</SidebarLink>
+                    <SidebarLink onClick={() => onClick('/make')}>퀴즈만들기</SidebarLink>
                     {user ? (
-                        <SidebarLink to="/mypage" onClick={toggle}>마이페이지</SidebarLink>
+                        <SidebarLink onClick={() => onClick('/mypage')}>마이페이지</SidebarLink>
                     ) : (
-                        <SidebarLink to="/register" onClick={toggle}>회원가입</SidebarLink>
+                        <SidebarLink onClick={() => onClick('/register')}>회원가입</SidebarLink>
                     )}
                 </SidebarMenu>
                 <SideBtnWrap>

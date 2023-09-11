@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import AuthForm from "../../components/auth/AuthForm";
+import { checkEmail } from "../../utils/CheckValidation";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeField, initializeForm, login } from "../../modules/auth";
-import AuthForm from "../../components/auth/AuthForm";
-import { useState } from "react";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -47,8 +47,7 @@ const LoginForm = () => {
             setErrorText('이메일, 비밀번호를 모두 입력해주세요.');
             return;
         }
-        const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-        if (!emailRegex.test(email)) {
+        if (!checkEmail(email)) {
             setErrorText('이메일을 올바른 형식으로 입력해주세요.');
             return;
         }
@@ -64,7 +63,7 @@ const LoginForm = () => {
             dispatch(changeField({ form: 'login', key: 'password', value: '' }));
         }
         if (auth && auth.status === 200) {
-            console.log("로그인 성공: ", auth);
+            // console.log("로그인 성공: ", auth);
             try{
                 setErrorText("");
                 localStorage.setItem('user', auth.data.token);
@@ -75,7 +74,7 @@ const LoginForm = () => {
                 console.log(e, 'localStorage is not working');
             }
     }
-    }, [auth, authError, navigate]);
+    }, [auth, authError, dispatch, navigate]);
 
     return (
         <AuthForm

@@ -10,34 +10,32 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer,{ rootSaga } from './modules';
 import { tempSetUser } from './modules/user';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MakeQuizStep2Page from './pages/MakeQuizStep2Page';
-import MakeQuizStep3Page from './pages/MakeQuizStep3Page';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import ConfirmEmail from './pages/ConfirmEmail';
-import AcceptPage from './pages/AccpetPage';
-import CreateAccountPage from './pages/CreateAccountPage';
+import MakeQuizStep2Page from './pages/quiz/MakeQuizStep2Page';
+import MakeQuizStep3Page from './pages/quiz/MakeQuizStep3Page';
+import LoginPage from './pages/auth/LoginPage';
+import RegisterPage from './pages/auth/RegisterPage';
+import ConfirmEmail from './pages/auth/ConfirmEmail';
+import CreateAccountPage from './pages/auth/CreateAccountPage';
 import HomePage from './pages/HomePage';
-import MakeQuizStep1Page from './pages/MakeQuizStep1Page';
-import SolveQuizStep1Page from './pages/SolveQuizStep1Page';
-import SolveQuizStep2Page from './pages/SolveQuizStep2Page';
-import SolveQuizStep3Page from './pages/SolveQuizStep3Page';
-import MyQuizListPage from './pages/MyQuizListPage';
-import SolveResultPage from './pages/SolveResultPage';
-import SolveCheckAnswerPage from './pages/SolveCheckAnswerPage';
-import MyQuizDetailPage from './pages/MyQuizDetailPage';
-import MyPagePage from './pages/MyPagePage';
-import ModifyInfoPage from './pages/ModifyInfoPage';
-import ChangePasswordPage from './pages/ChangePasswordPage';
-import TermsPage from './pages/TermsPage';
-import PrivacyPage from './pages/PrivacyPage';
-import ResetPasswordPage from './pages/ResetPasswordPage';
-import SendEmailPage from './pages/SendEmailPage';
+import MakeQuizStep1Page from './pages/quiz/MakeQuizStep1Page';
+import SolveQuizStep1Page from './pages/quiz/SolveQuizStep1Page';
+import SolveQuizStep2Page from './pages/quiz/SolveQuizStep2Page';
+import MyQuizListPage from './pages/quiz/MyQuizListPage';
+import SolveResultPage from './pages/quiz/SolveResultPage';
+import SolveCheckAnswerPage from './pages/quiz/SolveCheckAnswerPage';
+import MyQuizDetailPage from './pages/quiz/MyQuizDetailPage';
+import MyPagePage from './pages/auth/MyPagePage';
+import ModifyInfoPage from './pages/auth/ModifyInfoPage';
+import ChangePasswordPage from './pages/auth/ChangePasswordPage';
+import TermsPage from './pages/policy/TermsPage';
+import PrivacyPage from './pages/policy/PrivacyPage';
+import ResetPasswordPage from './pages/auth/ResetPasswordPage';
+import SendEmailPage from './pages/auth/SendEmailPage';
 import NoticePage from './pages/notice/NoticePage';
 import NoticeWritePage from './pages/notice/NoticeWritePage';
 import NoticeReadPage from './pages/notice/NoticeReadPage';
-import MyInfoPage from './pages/MyInfoPage';
-import MyBookmarkListPage from './pages/MyBookmarkListPage';
+import MyInfoPage from './pages/auth/MyInfoPage';
+import MyBookmarkListPage from './pages/quiz/MyBookmarkListPage';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -78,7 +76,6 @@ const router = createBrowserRouter([
       { path: 'makeStep3', element: <MakeQuizStep3Page /> },
       { path: 'solve', element: <SolveQuizStep1Page /> },
       { path: 'solveStep2', element: <SolveQuizStep2Page /> },
-      { path: 'solveStep3', element: <SolveQuizStep3Page /> },
       { path: 'solveResult', element: <SolveResultPage /> },
       { path: 'solveCheckAnswer', element: <SolveCheckAnswerPage /> },
     ]
@@ -122,10 +119,6 @@ const router = createBrowserRouter([
   {
     path: 'confirm',
     element: <ConfirmEmail />,
-  },
-  {
-    path: 'accept',
-    element: <AcceptPage />,
   },
   {
     path: 'create',

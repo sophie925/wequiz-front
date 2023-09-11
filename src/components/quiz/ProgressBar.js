@@ -9,7 +9,7 @@ const ProgressBarBlock = styled.div`
     width: 100%;
     background-color: #eeeeee;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 `;
 
 const ProgressBar = (props) => {

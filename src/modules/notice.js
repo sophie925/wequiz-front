@@ -55,7 +55,7 @@ const modifyNoticeSaga = createRequestSaga(MODIFYNOTICE, noticeAPI.modifyNotice)
 const listNoticesSaga = createRequestSaga(LISTNOTICES, noticeAPI.listNotices);
 const viewContentSaga = createRequestSaga(VIEWCONTENT, noticeAPI.viewContent);
 export function* noticeSaga() {
-    console.log("notice saga success");
+    // console.log("notice saga success");
 
     yield takeLatest(CREATENOTICE, createNoticeSaga);
     yield takeLatest(MODIFYNOTICE, modifyNoticeSaga);

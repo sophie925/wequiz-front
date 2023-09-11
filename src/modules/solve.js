@@ -58,7 +58,7 @@ const getListQuizPapersSaga = createRequestSaga(GETLISTQUIZPAPERS, solveAPI.getL
 const viewQuizPaperSaga = createRequestSaga(VIEWQUIZPAPER, solveAPI.viewQuizPaper);
 const viewNewQuizPaperSaga = createRequestSaga(VIEWNEWQUIZPAPER, solveAPI.viewNewQuizPaper);
 export function* solveSaga() {
-    console.log("solve saga success");
+    // console.log("solve saga success");
 
     yield takeLatest(QUIZPAPERS, quizpapersSaga);
     yield takeLatest(GETLISTQUIZPAPERS, getListQuizPapersSaga);
