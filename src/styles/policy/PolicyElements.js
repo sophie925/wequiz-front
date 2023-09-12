@@ -51,17 +51,36 @@ export const ContentBlock = styled.div`
     p {
         font-size: 17px;
     }
+    li {
+        line-height: 25px;
+        font-size: 17px;
+    }
+`;
+
+export const TermsBlock = styled.div`
     ul {
         padding: 0;
         list-style: none;
-        font-size: 17px;
     }
+`;
+
+export const PrivacyBlock = styled.div`
     ol {
         border: 1px solid #dedede;
         padding-top: 20px;
         padding-bottom: 20px;
+        margin-bottom: 4rem;
     }
-    li {
-        line-height: 25px;
+    ul {
+        padding-left: 30px;
     }
+`;
+
+export const BoldBlock = styled.p`
+    font-weight: bold;
+`;
+
+export const IconTitle = styled.p`
+    display: flex;
+    align-items: center;
 `;

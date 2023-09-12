@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
-import Footer from "../components/common/Footer";
 import HeaderContainer from "../containers/common/HeaderContainer";
+import FooterContainer from "../containers/common/FooterContainer";
 
 const MainPageBlock = styled.div`
     display: flex;
@@ -26,7 +26,7 @@ const MainPage = () => {
             <Wrapper>
                 <Outlet />
             </Wrapper>
-            <Footer />
+            <FooterContainer />
         </MainPageBlock>
     );
 };

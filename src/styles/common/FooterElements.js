@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { MdCopyright } from 'react-icons/md';
-import { Link as LinkR } from "react-router-dom";
 
 export const FooterBlock = styled.div`
     width: 100%;
@@ -13,13 +12,14 @@ export const FooterLinkWrap = styled.div`
     margin-top: 20px;
 `;
 
-export const FooterLink = styled(LinkR)`
+export const FooterLink = styled.a`
     text-decoration: none;
     color: #333;
     position: relative;
     font-weight: 400;
     margin: 5px 10px;
     white-space: pre;
+    cursor: pointer;
     &:after {
         content: "";
         position: absolute;
