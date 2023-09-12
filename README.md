@@ -125,7 +125,7 @@
 
   |좋아요|찜하기|공유하기|공유하기(팝업)-카카오톡|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/90b53501-2620-435c-860f-8fb1b2ab2bb3)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/a24767d2-fa69-4be8-ac95-3c683db25416)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/8ade7271-5213-4745-912d-79d450c88ed1)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/3c75b053-5857-4282-95bd-3014591b8839)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/f4234f85-b6ca-40dd-8c0c-19a38e8ab651.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/1464f651-e716-4827-887a-a784730309e6.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/b2fb2a68-2ff5-41ef-94b9-5fe19d7a30b0.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/3bc670d1-58b9-4a1c-acb0-0508a320b2bc.jpg)|
   <br />
 </details>
 
@@ -140,7 +140,7 @@
   
   |로그인|재설정용 이메일전송|비밀번호 재설정|
   |---|---|---|
-  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/3aa23983-a46e-4c6c-8923-31b7e72afac5.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/7a7d59e8-9fd9-4112-8a6e-eac77384cee3)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/b750ce17-46b1-405c-957f-a746f3bf08e0)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/3aa23983-a46e-4c6c-8923-31b7e72afac5.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/7a6e22ff-d4ae-4e3b-9324-4027589a7d45.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/079fe7a9-e62c-4529-88b3-497f976fb2c4.jpg)|
   <br />
 </details>
 
@@ -152,11 +152,11 @@
   
   |회원가입|로딩화면|이메일전송|
   |---|---|---|
-  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/1ba021c7-c686-4719-91b2-7214a84da163.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/7d6ba6b5-2b2e-4400-8e46-a3a8fceb826f)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/6059b41c-0db6-4467-8434-a1ce076afcd1)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/1ba021c7-c686-4719-91b2-7214a84da163.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/356fd25f-60e6-4f94-b86e-5c96758b1487.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/10277b21-769e-4e00-abcf-24027c175267.jpg)|
   
   |이메일확인|계정생성|계정생성-필수체크|계정생성-전체체크|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/272bde07-f720-4474-8c2b-9352a5ac78d6)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/c75bfd50-4649-49f3-aa6d-380caf762c72)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/311ac5f8-39c4-475d-a927-32570fce553f)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/56d0eb84-8d3c-429b-9cc7-208fb47224d3)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/5bcc2c59-0c72-4ddc-95c8-bf0c1bb54add.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/675bd7ed-64c7-4710-9086-43ed8b4c757f.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/ab04bf43-cffd-41dc-bdb2-e54ffb28ec63.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/686d44d0-3b64-4627-a8b8-3d20618521e4.jpg)|
   <br />
 </details>
 
@@ -172,11 +172,11 @@
   
   |마이페이지|나의 정보|회원정보수정|비밀번호변경|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/e209c8da-d924-45b0-ba16-7e81bdca58e9.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/fd1505b6-7059-431e-b877-8224a7bdd275.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/ab796d66-2104-449b-8b16-d56a35945e0b)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/6a31392f-ea8a-4ad2-a66a-00a65bb9cfc7)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/e209c8da-d924-45b0-ba16-7e81bdca58e9.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/fd1505b6-7059-431e-b877-8224a7bdd275.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/1a1670b6-6d4b-4c6c-ae45-770e930423ec.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/68fcbef4-eb5d-4db5-a847-26c117837d6d.jpg)|
   
   |찜한 퀴즈|내 퀴즈|내 퀴즈(상세조회)|
   |---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/2cfeb624-3803-453c-8cd6-870b39f52950)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/f8e8a406-180b-406d-900a-45c309d56d97)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/60f9a088-7ee9-4093-8a94-0bf1e152afe7)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/4c1fabf6-3190-40aa-9b43-83795c7a65ee.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/22cc3141-77fa-4f16-8162-0c271b2eb9ba.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/f87b1ecf-4db4-4aca-8214-fbd0aca10f8c.jpg)|
   <br />
 </details>
 
@@ -192,15 +192,15 @@
   
   |목록조회-기본|목록조회-상태조건|목록조회-카테고리조건|무한스크롤|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/55fd0c53-2573-4f38-8fd9-6924745cea11)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/cb0a30f5-9496-4930-b75a-d0f82476105b)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/dc54603a-ea94-4cad-9a47-766a6e57e393)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/fe7f82ec-5e80-46f6-b502-840d77f7c361.jpg)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/57f09f6b-2582-472d-b327-77f15ffdf3eb.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/37550ac1-ca57-40cb-84ec-28c408f9c458.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/857dea78-3043-4279-b2f9-fa384dcc9958.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/d8570f82-2f23-490d-a5b5-ef14b51dad64.jpg)|
   
   |퀴즈풀기(상세)|힌트조회|결과조회|답안지확인|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/31d5d768-7018-4f4a-8ce6-ef3934510675.jpg)|![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/2e54d28c-cefe-4584-82fc-40cd866df422)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/59806fb4-cb25-4889-b015-4e7f3a12c055.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/fe5990e9-1f10-4bb1-8453-adc262deff20.jpg)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/31d5d768-7018-4f4a-8ce6-ef3934510675.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/9fe3914b-1623-41c9-b913-df3a80f1058c.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/59806fb4-cb25-4889-b015-4e7f3a12c055.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/fe5990e9-1f10-4bb1-8453-adc262deff20.jpg)|
   
   |힌트사용(팝업)|정답|오답|시간초과|
   |---|---|---|---|
-  |![image](https://github.com/sophie925/sorupiru-quiz-front/assets/89984685/b572801e-75d8-4499-800e-d4356187a22c)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/2fee3188-0c55-4ccc-8116-1d46f9f41960.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/7c5a33b5-e381-4b98-a7b0-35d3d018b181.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/c67b9d29-e578-4ac1-9c0e-85b55cdd8eef.jpg)|
+  |![image](https://github.com/sophie925/wequiz-front/assets/89984685/4ed8683d-c32c-400a-8fe1-3f18784465fa.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/2fee3188-0c55-4ccc-8116-1d46f9f41960.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/7c5a33b5-e381-4b98-a7b0-35d3d018b181.jpg)|![image](https://github.com/sophie925/wequiz-front/assets/89984685/c67b9d29-e578-4ac1-9c0e-85b55cdd8eef.jpg)|
   <br />
 </details>
 
