@@ -6,7 +6,7 @@ import Button from "../../components/common/Button";
 import Dialog from "../../components/common/Dialog";
 import ModalForm from "../../components/common/ModalForm";
 import Loading01 from "../../components/common/Loading01";
-import ProgressBar from "../../components/quiz/ProgressBar";
+import ProgressBar from "../../components/common/ProgressBar";
 import Timer from "../../components/quiz/Timer";
 import AnswerConfirm from "../../components/quiz/AnswerConfirm";
 import { useEffect, useState } from "react";

@@ -85,6 +85,7 @@ const SolveQuizStep01 = () => {
                 }
             }
         }
+        
         if (form2 && form2.status === 200) {
             console.log("퀴즈 목록(new) 조회 성공", form2);
             const { pagination, quizPapers } = form2?.data.data;

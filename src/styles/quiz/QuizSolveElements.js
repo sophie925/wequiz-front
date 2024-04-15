@@ -2,7 +2,7 @@ import styled from "styled-components";
 import oc from "open-color";
 import { MdFlutterDash, MdDone, MdDirectionsRun } from "react-icons/md"
 
-// 퀴즈 목록조회 화면
+/* 퀴즈 목록조회 화면 */
 export const DropDownBlock = styled.div`
     display: grid;
     gap: 0.5rem;
@@ -123,7 +123,7 @@ export const LoadingWrap = styled.div`
     padding-top: 20px;
 `;
 
-// 퀴즈 결과조회 화면
+/* 퀴즈 결과조회 화면 */
 export const SolveResultBlock = styled.div`
     display: flex;
     flex-direction: column;
@@ -191,3 +191,37 @@ export const ResultItem = styled.div`
     }
 `;
 
+/* 퀴즈 답안지결과 화면 */
+export const SolveAnswerResultBlock = styled.div`
+    background-color: ${oc.indigo[1]};
+    border-radius: 15px;
+    padding: 10px 15px 0;
+    margin-bottom: 20px;
+`;
+
+export const SovleResultTitleLabel = styled.p`
+    color: ${oc.gray[7]};
+    font-weight: bold;
+    margin-bottom: 0;
+`;
+
+export const SolveResultTitle = styled.h3`
+    margin: 5px 0 12px;
+`;
+
+export const SolveResultCircleGraphWrap = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #f2f2f2;
+    background-color: ${oc.indigo[3]};
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px 30px 20px 15px;
+    p {
+        font-size: 18px;
+        strong {
+            color: ${oc.indigo[7]};
+        }
+    }
+`;
