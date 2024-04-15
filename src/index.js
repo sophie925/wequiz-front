@@ -22,7 +22,7 @@ import SolveQuizStep1Page from './pages/quiz/SolveQuizStep1Page';
 import SolveQuizStep2Page from './pages/quiz/SolveQuizStep2Page';
 import MyQuizListPage from './pages/quiz/MyQuizListPage';
 import SolveResultPage from './pages/quiz/SolveResultPage';
-import SolveCheckAnswerPage from './pages/quiz/SolveCheckAnswerPage';
+import SolveAnswerResultPage from './pages/quiz/SolveAnswerResultPage';
 import MyQuizDetailPage from './pages/quiz/MyQuizDetailPage';
 import MyPagePage from './pages/auth/MyPagePage';
 import ModifyInfoPage from './pages/auth/ModifyInfoPage';
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
       { path: 'solve', element: <SolveQuizStep1Page /> },
       { path: 'solveStep2', element: <SolveQuizStep2Page /> },
       { path: 'solveResult', element: <SolveResultPage /> },
-      { path: 'solveCheckAnswer', element: <SolveCheckAnswerPage /> },
+      { path: 'solveAnswerResult', element: <SolveAnswerResultPage /> },
     ]
   },
   {

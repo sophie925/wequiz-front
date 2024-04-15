@@ -1,5 +1,4 @@
-import { OwlIcon, ResultItem, SolveResultBlock, SolveResultBoxWrap, SovleQuizResult, SovleQuizResultDetail } from '../../styles/quiz/QuizSolveElements';
-import Button from '../../components/common/Button';
+import QuizResultForm from '../../components/quiz/QuizResultForm';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { solveReset } from '../../modules/solve';
@@ -12,7 +11,7 @@ const SolveResult = () => {
     
     const onClick = e => {
         dispatch(solveReset());
-        navigate('/solveCheckAnswer', {
+        navigate('/solveAnswerResult', {
             state: {
                 quizPaperId: quizPaperId,
                 title: title,
@@ -24,30 +23,11 @@ const SolveResult = () => {
     };
 
     return (
-        <SolveResultBlock>
-            <h1>Good Job!</h1>
-            <SolveResultBoxWrap>
-                <OwlIcon />
-                <Button fullwidth onClick={onClick}>정답 확인</Button>
-            </SolveResultBoxWrap>
-            <SovleQuizResult>
-                <h3>총 {totalCount}문제</h3>
-                <SovleQuizResultDetail>
-                    <ResultItem>
-                        <h4>정답률</h4>
-                        <span>{Math.round((correctCount/totalCount) * 100)}%</span>
-                    </ResultItem>
-                    <ResultItem>
-                        <h4>맞춘문제</h4>
-                        <span>{correctCount}</span>
-                    </ResultItem>
-                    <ResultItem>
-                        <h4>틀린문제</h4>
-                        <span>{totalCount-correctCount}</span>
-                    </ResultItem>
-                </SovleQuizResultDetail>
-            </SovleQuizResult>
-        </SolveResultBlock>
+        <QuizResultForm
+            totalCount={totalCount}
+            correctCount={correctCount}
+            onClick={onClick}
+        />
     );
 };
 
