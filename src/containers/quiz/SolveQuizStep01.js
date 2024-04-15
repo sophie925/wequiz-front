@@ -64,7 +64,7 @@ const SolveQuizStep01 = () => {
                         loadMore();
                     }
                 },
-                { threshold: 1 }
+                { threshold: 0.9 }
             );
             observe.observe(targetElement);
         }
@@ -72,12 +72,9 @@ const SolveQuizStep01 = () => {
 
     // 퀴즈 목록(new) 조회 api 호출 후 로직
     useEffect(() => {
-        if (form2 && form2.status === 200) {
-            // console.log("퀴즈 목록(new) 조회 성공", form2);
-            const { pagination, quizPapers } = form2?.data.data;
-            setLoading(false);
-            setPagination(pagination);
-            if (page < pagination.totalPages) {
+        // 현재 페이지에 따른 퀴즈 데이터 셋팅
+        const handlePageLogic = (totalPages, quizPapers) => {
+            if (page < totalPages) {
                 setQuizData((prev) => [...prev, ...quizPapers]);
                 setTimeout(() => setLoading(true), 1000);
             } else {
@@ -87,6 +84,14 @@ const SolveQuizStep01 = () => {
                     setQuizData((prev) => [...prev, ...quizPapers]);
                 }
             }
+        }
+        if (form2 && form2.status === 200) {
+            console.log("퀴즈 목록(new) 조회 성공", form2);
+            const { pagination, quizPapers } = form2?.data.data;
+            setLoading(false);
+            setPagination(pagination);
+            // 퀴즈 데이터 셋팅 함수
+            handlePageLogic(pagination.totalPages, quizPapers);
         }
     }, [form2]);
 
