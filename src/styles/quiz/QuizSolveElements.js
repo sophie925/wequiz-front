@@ -3,7 +3,7 @@ import oc from "open-color";
 import { MdFlutterDash, MdDone, MdDirectionsRun } from "react-icons/md"
 
 /* 퀴즈 목록조회 화면 */
-export const DropDownBlock = styled.div`
+export const DropDownFormBlock = styled.div`
     display: grid;
     gap: 0.5rem;
     grid-template-columns: 1fr 1fr;
@@ -32,6 +32,12 @@ export const DropDownBtn = styled.button`
     svg {
         font-size: 1.3rem;
     }
+`;
+
+export const DropDownText = styled.div`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 `;
 
 export const DropDownContent = styled.div`
@@ -109,11 +115,6 @@ export const QuizListTitleBlock = styled.div`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    p {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
     svg {
         font-size: 1.3rem;
     }

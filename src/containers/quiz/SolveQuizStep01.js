@@ -1,8 +1,6 @@
-import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdOutlineHorizontalRule } from "react-icons/md";
-import { StateCheckIcon, DropDownBlock, DropDownBtn, DropDownContent, DropDownItem, QuizListTitleBlock, QuizListWrap, StateRunningIcon, StateItem, TagBlock, CategoryBoxItem, SortItem, SelectIcon, LoadingWrap } from "../../styles/quiz/QuizSolveElements";
-import QuizListContainer from "./QuizListContainer";
-import Tag from "../../components/common/Tag";
-import Loading02 from "../../components/common/Loading02";
+import DropDownForm from "../../components/quiz/dropdown/DropDownForm";
+import QuizSolveForm from "../../components/quiz/QuizSolveForm";
+import Tag from "../../components/quiz/tag/Tag";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../modules/category";
@@ -176,6 +174,15 @@ const SolveQuizStep01 = () => {
         }
     };
 
+    // 조건 태그 삭제
+    const deleteTagItem = e => {
+        const deleteTagItem = e.target.parentElement.firstChild.innerText;
+        const filteredTagList = tagList.filter(tagItem => tagItem !== deleteTagItem);
+        setTagList(filteredTagList);
+        checkCate("D", deleteTagItem);
+        findBoxItem(deleteTagItem);
+    };
+
     // 조건 태그 삭제시 수행할 로직
     const findBoxItem = (item) => {
         resetData();
@@ -192,74 +199,27 @@ const SolveQuizStep01 = () => {
         }
     };
 
-    // 조건 태그 삭제
-    const deleteTagItem = e => {
-        const deleteTagItem = e.target.parentElement.firstChild.innerText;
-        const filteredTagList = tagList.filter(tagItem => tagItem !== deleteTagItem);
-        setTagList(filteredTagList);
-        checkCate("D", deleteTagItem);
-        findBoxItem(deleteTagItem);
-    };
-
     return (
         <>
-            <DropDownBlock>
-                <DropDownItem>
-                    <DropDownBtn onClick={() => onClickDropDown("state")}>
-                        상태 {isStateOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown /> }
-                    </DropDownBtn>
-                    <DropDownContent isShow={isStateOpen} isCate={false}>
-                        <StateItem id="NONE" onClick={e => onClickBoxItem("state", e)}>
-                            <MdOutlineHorizontalRule /> 안 푼 퀴즈 
-                        </StateItem>
-                        <StateItem id="COMPLETED" onClick={e => onClickBoxItem("state", e)}>
-                            <StateCheckIcon /> 푼 퀴즈 
-                        </StateItem>
-                        <StateItem id="STARTED" onClick={e => onClickBoxItem("state", e)}>
-                            <StateRunningIcon /> 진행중 퀴즈 
-                        </StateItem>
-                    </DropDownContent>
-                </DropDownItem>
-                <DropDownItem>
-                    <DropDownBtn onClick={() => onClickDropDown("category")}>
-                        카테고리 {isCategoryOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown /> }
-                    </DropDownBtn>
-                    <DropDownContent isShow={isCategoryOpen} isCate={true}>
-                        {categories && categories.map((value, index) => (
-                            <CategoryBoxItem key={index} isCheck={checkList[index]}
-                                onClick={() => onClickBoxItem("category", value)}>{value.categoryDisplay}</CategoryBoxItem>
-                        ))}
-                    </DropDownContent>
-                </DropDownItem>
-            </DropDownBlock>
-            <TagBlock>
-                {tagList && <Tag tags={tagList} onClick={deleteTagItem} />}
-            </TagBlock>
-            <QuizListWrap>
-                <QuizListTitleBlock>
-                    <h3>{pagination?.totalCount}개 퀴즈</h3>
-                    <p onClick={() => onClickDropDown()}>
-                        {sort === "RECENCY" ? '최신순' : '인기순'} {isShow ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown /> }
-                    </p>
-                    <DropDownContent isShow={isShow} isSort={true}>
-                        <SortItem id="RECENCY" onClick={e => onClickBoxItem("sort", e)}>
-                            최신순 {sort === "RECENCY" ? <SelectIcon /> : ''}
-                        </SortItem>
-                        <SortItem id="POPULARITY" onClick={e => onClickBoxItem("sort", e)}>
-                            인기순 {sort === "POPULARITY" ? <SelectIcon /> : ''}
-                        </SortItem>
-                    </DropDownContent>
-                </QuizListTitleBlock>
-                <QuizListContainer
-                    type="solve"
-                    form={quizData}
-                />
-                {loading && (
-                    <LoadingWrap ref={pageEnd}>
-                        <Loading02 />
-                    </LoadingWrap>
-                )}
-            </QuizListWrap>
+            <DropDownForm
+                isStateOpen={isStateOpen}
+                isCategoryOpen={isCategoryOpen}
+                categories={categories}
+                checkList={checkList}
+                onClickDropDown={onClickDropDown}
+                onClickBoxItem={onClickBoxItem}
+            />
+            <Tag tagList={tagList} deleteTagItem={deleteTagItem} />
+            <QuizSolveForm
+                pagination={pagination}
+                sort={sort}
+                isShow={isShow}
+                quizData={quizData}
+                loading={loading}
+                pageEnd={pageEnd}
+                onClickDropDown={onClickDropDown}
+                onClickBoxItem={onClickBoxItem}
+            />
         </>
     );
 };
