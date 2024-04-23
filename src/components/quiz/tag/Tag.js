@@ -1,4 +1,4 @@
-import { TagBlock } from "../../../styles/quiz/QuizSolveElements";
+import { TagBlock } from "../../../styles/quiz/TagElements";
 import TagBox from "./TagBox";
 
 const Tag = ({ tagList, deleteTagItem }) => {

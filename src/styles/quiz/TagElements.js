@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import oc from "open-color";
 
+export const TagBlock = styled.div`
+    margin-top: 20px;
+`;
+
 export const TagItemBox = styled.div`
     display: flex;
     align-items: center;

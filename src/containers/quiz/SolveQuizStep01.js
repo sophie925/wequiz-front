@@ -1,5 +1,5 @@
 import DropDownForm from "../../components/quiz/dropdown/DropDownForm";
-import QuizSolveForm from "../../components/quiz/QuizSolveForm";
+import QuizSolveListForm from "../../components/quiz/solve/QuizSolveListForm";
 import Tag from "../../components/quiz/tag/Tag";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -83,9 +83,9 @@ const SolveQuizStep01 = () => {
                 }
             }
         }
-        
+
         if (form2 && form2.status === 200) {
-            console.log("퀴즈 목록(new) 조회 성공", form2);
+            // console.log("퀴즈 목록(new) 조회 성공", form2);
             const { pagination, quizPapers } = form2?.data.data;
             setLoading(false);
             setPagination(pagination);
@@ -210,7 +210,7 @@ const SolveQuizStep01 = () => {
                 onClickBoxItem={onClickBoxItem}
             />
             <Tag tagList={tagList} deleteTagItem={deleteTagItem} />
-            <QuizSolveForm
+            <QuizSolveListForm
                 pagination={pagination}
                 sort={sort}
                 isShow={isShow}

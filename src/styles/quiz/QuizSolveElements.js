@@ -89,10 +89,6 @@ export const StateRunningIcon = styled(MdDirectionsRun)`
     color: ${oc.yellow[6]};
 `;
 
-export const TagBlock = styled.div`
-    margin-top: 20px;
-`;
-
 export const SortItem = styled.div`
     display: flex;
     justify-content: space-between;
