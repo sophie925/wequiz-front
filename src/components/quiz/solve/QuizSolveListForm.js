@@ -1,14 +1,14 @@
-import { LoadingWrap, QuizListTitleBlock, QuizListWrap, SelectIcon, SortItem } from "../../styles/quiz/QuizSolveElements";
-import QuizListContainer from "../../containers/quiz/QuizListContainer";
-import Loading02 from "../common/Loading02";
-import DropDownItemBox from "./dropdown/DropDownItemBox";
+import { LoadingWrap, QuizListTitleBlock, QuizListWrap, SelectIcon, SortItem } from "../../../styles/quiz/QuizSolveElements";
+import QuizListContainer from "../../../containers/quiz/QuizListContainer";
+import Loading02 from "../../common/Loading02";
+import DropDownItemBox from "../dropdown/DropDownItemBox";
 
 const sortMap = {
     RECENCY : '최신순',
     POPULARITY: '인기순'
 };
 
-const QuizSolveForm = ({ 
+const QuizSolveListForm = ({ 
     pagination, 
     sort, 
     isShow,
@@ -49,4 +49,4 @@ const QuizSolveForm = ({
     );
 };
 
-export default QuizSolveForm;
+export default QuizSolveListForm;

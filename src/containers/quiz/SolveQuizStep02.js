@@ -1,13 +1,8 @@
-import { MdOutlineCreate, MdLockOutline, MdLockOpen } from "react-icons/md";
-import { TextField } from "../../../node_modules/@mui/material/index";
-import { HintItem, SolveQuizContentWrap, SolveQuizHintWrap, SolveQuizProblem, SolveQuizStep02Block, SolveQuizTopText, SolveQuizTopWrap } from "../../styles/quiz/QuizElements";
-import { ErrorText } from "../../styles/common/CommonElements";
 import Button from "../../components/common/Button";
 import Dialog from "../../components/common/Dialog";
 import ModalForm from "../../components/common/ModalForm";
 import Loading01 from "../../components/common/Loading01";
-import ProgressBar from "../../components/common/ProgressBar";
-import Timer from "../../components/quiz/Timer";
+import QuizSolveForm from "../../components/quiz/solve/QuizSolveForm";
 import AnswerConfirm from "../../components/quiz/AnswerConfirm";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -30,6 +25,8 @@ const SolveQuizStep02 = () => {
         form3: answer.status,
     }));
     
+    const [loading, setLoading] = useState(false);
+
     const [quiz, setQuiz] = useState({});
     const [currentIndex, setCurrentIndex] = useState(0);
     const [errorText, setErrorText] = useState('');
@@ -39,14 +36,15 @@ const SolveQuizStep02 = () => {
     const [flag, setFlag] = useState(true);
     const [answer, setAnswer] = useState('');
     const [problem, setProblem] = useState('');
-    const [quizDataList, setQuizDataList] = useState([]);
-    const [minutes, setMinutes] = useState(parseInt(1));
-    const [seconds, setSeconds] = useState(parseInt(0));
-    const [isTimeOverrun, setIsTimeOverrun] = useState(false);
+    
+    const [isTimeOverrun, setIsTimeOverrun] = useState(false); // 타임오버시 체크값
+    const [checkTime, setCheckTime] = useState(false); // 시간 초기화 체크값
+    
+    // 비회원용
     const [locationData, setLocationData] = useState({});
-    const [loading, setLoading] = useState(false);
+    const [quizDataList, setQuizDataList] = useState([]);
     const token = localStorage.getItem('user');
-
+    
     // 공유하기로 접근할 경우 search, 일반적인 경우 state로 진입
     useEffect(() => {
         if (location.search) {
@@ -83,6 +81,7 @@ const SolveQuizStep02 = () => {
         }, 500)
     }, [dispatch, step, quizPaperId]);
 
+    // 퀴즈 조회 api 수행 후 로직
     useEffect(() => {
         if (form && form.status === 200) {
             // console.log("퀴즈 조회 성공!", form);
@@ -136,6 +135,7 @@ const SolveQuizStep02 = () => {
         handleDialogClose();
     };
 
+    // 힌트 조회 api 수행 후 로직
     useEffect(() => {
         if (form2 && form2.status === 200) {
             // console.log("힌트 조회 성공!", form2);
@@ -145,16 +145,11 @@ const SolveQuizStep02 = () => {
                 hint: form2.data.data.hint,
                 uncovered: true
             };
-            const updateQuiz = {...quiz};
+            const updateQuiz = { ...quiz };
             updateQuiz.hints[position] = updateHint;
             dispatch(hintReset());
         }
     }, [form2, hintData, quiz, dispatch]);
-
-    // 정답 확인용 메세지 관련 이벤트
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const handleModalOpen = () => setIsModalOpen(true);
-    const handleModalClose = () => setIsModalOpen(false);
 
     const onChange = e => {
         const { name, value } = e.target;
@@ -170,29 +165,29 @@ const SolveQuizStep02 = () => {
     // 정답 인풋에 Enter 키 눌렀을 시
     const onKeyPress = e => {
         if (e.key === 'Enter') {
-            onClick();
+            onClickAnswer();
         } 
     }
 
     // 정답확인 버튼 클릭 시
-    const onClick = () => {
+    const onClickAnswer = () => {
         const { quizId, answer, problem } = quiz;
-        let flag = false;
         let updateAnswer = quiz;
         // 시간 내 답을 입력 못하면 오답 처리
-        if (minutes === 0 && seconds === 0) {
-            updateAnswer = { quizId, answer: ' ' };
-            flag = true;
-        }
-        if (!flag && (answer === '' || answer === null)) {
-            setErrorText("정답을 입력해주세요.");
-            return;
+        if (isTimeOverrun) {
+            updateAnswer = {
+                quizId,
+                answer: ' '
+            };
+        } else {
+            if (answer === '' || answer === null) {
+                setErrorText("정답을 입력해주세요.");
+                return;
+            }
         }
         if (currentIndex < form.data.data.length) {
             setTimeout(() => {
                 setCurrentIndex(index => index + 1);
-                setMinutes(parseInt(1));
-                setSeconds(parseInt(0));
             }, 1300);
             dispatch(checkQuizAnswer(updateAnswer));
         }
@@ -202,12 +197,18 @@ const SolveQuizStep02 = () => {
         }
     };
 
+    // 정답 확인용 메세지 관련 이벤트
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const handleModalOpen = () => setIsModalOpen(true);
+    const handleModalClose = () => setIsModalOpen(false);
+
+    // 정답 확인 api 수행 후 로직
     useEffect(() => {
         if (form3 && form3.status === 200) {
             // console.log("정답 확인 성공!", form3);
             const chkCorrect = form3.data.data.correct;
             if (!token) { // 비회원인 경우
-                const updatedList = [...quizDataList];
+                const updatedList = [ ...quizDataList ];
                 const updatedQuizData = {
                     answer: chkCorrect ? answer: '',
                     hints: [],
@@ -222,15 +223,19 @@ const SolveQuizStep02 = () => {
                 setCorrectCount(count => count + 1);
             }
             setIsCorrect(chkCorrect);
+            setCheckTime(true);
             handleModalOpen();
         }
     }, [form3]);
     
     useEffect(() => {
         setTimeout(() => {
+            setErrorText('');
             handleModalClose();
+            setCheckTime(false);
             setIsTimeOverrun(false);
         }, 1000);
+
         if (!isModalOpen && currentIndex === form?.data.data?.length) {
             // console.log("퀴즈결과보기 넘어가기 전:", form);
             navigate('/solveResult', {
@@ -243,102 +248,62 @@ const SolveQuizStep02 = () => {
                 }
             });
         }
-    }, [isModalOpen, currentIndex]);
-
-    // 타이머 계산하는 로직
+    }, [isModalOpen, currentIndex, quizPaperId, title, correctCount, token, quizDataList]);
+    
+    // 퀴즈 시간초과 된 경우
     useEffect(() => {
-        const countdown = setInterval(() => {
-            if (parseInt(seconds) > 0) {
-                setSeconds(parseInt(seconds) - 1);
-            }
-            if (parseInt(seconds) === 0) {
-                if (parseInt(minutes) === 0) {
-                    setIsTimeOverrun(true);
-                    setQuiz({ ...quiz, answer: ' ' });
-                    onClick();
-                    clearInterval(countdown);
-                } else {
-                    setMinutes(parseInt(minutes) - 1);
-                    setSeconds(59);
-                }
-            }
-        }, 1000);
-        return () => clearInterval(countdown);
-    }, [minutes, seconds]);
+        if (isTimeOverrun) {
+            setIsTimeOverrun(true);
+            setQuiz({
+                ...quiz,
+                answer: ' '
+            });
+            onClickAnswer();
+        }
+    }, [isTimeOverrun]);
 
     return (
         <>
-        {loading ? <Loading01 /> : (
-            <SolveQuizStep02Block>
-                {quiz && (
-                    <>
-                        <ProgressBar length={form?.data.data?.length} index={currentIndex}/>
-                        <SolveQuizTopWrap>
-                            <SolveQuizTopText>
-                                <MdOutlineCreate />
-                                {form?.data.data?.length}문제 중 {currentIndex+1}번째
-                            </SolveQuizTopText>
-                            <Timer minutes={minutes} seconds={seconds} />
-                        </SolveQuizTopWrap>
-                        <SolveQuizContentWrap>
-                            <SolveQuizProblem>{quiz?.problem}</SolveQuizProblem>
-                            <TextField
-                                fullWidth
-                                name="answer"
-                                label="정 답"
-                                value={quiz?.answer ?? ''}
-                                InputLabelProps={{ shrink: true }}
-                                variant="standard"
-                                onChange={onChange}
-                                onKeyPress={onKeyPress}
-                            />
-                            <ErrorText isCheck={true}>{errorText}</ErrorText>
-                        </SolveQuizContentWrap>
-                        <SolveQuizHintWrap>
-                            {quiz?.hints && quiz?.hints.map((hint, index) => (
-                                <HintItem
-                                    key={index}
-                                    isShow={hint.uncovered}
-                                    onClick={e => hintClick(e, hint)}
-                                >
-                                    {hint.uncovered ? hint.hint : `힌트${hint.position+1}`}
-                                    {hint.uncovered ? <MdLockOpen/> : <MdLockOutline />}
-                                </HintItem>
-                            ))}
-                        </SolveQuizHintWrap>
-                        <Button fullwidth indigo onClick={onClick}>
-                            {form && currentIndex === form.data.data.length-1 ? (
-                                <>최 종 확 인<br/><span>(결과화면 이동)</span></>
-                            ) : (
-                                <>정 답 확 인<br/><span>(다음문제 이동)</span></>
-                            )}
-                        </Button>
-                    </>
-                )}
-                {isDialogOpen &&
-                    <Dialog isOpen={isDialogOpen}
-                        title={`${hintData.innerText}을(를) 보시겠습니까?`}
-                        before={{ onClick: handleDialogClose }}
-                        after={{ onClick: onAfterClick }}
-                    >
-                        힌트를 보시면 포인트가 차감됩니다.
-                    </Dialog>
-                }
-                {isOpen &&
-                    <ModalForm isOpen={isOpen} title="안내 메세지">
-                        <div style={{ textAlign: 'center' }}>
-                            <p style={{ marginBottom: '30px' }}>힌트는 로그인 후 이용가능합니다.</p>
-                            <Button medium onClick={handleClose}>확인</Button>
-                        </div>
-                    </ModalForm>
-                }
-                {isModalOpen &&
-                    <ModalForm isOpen={isModalOpen}>
-                        <AnswerConfirm isCorrect={isCorrect} isTimeOverrun={isTimeOverrun}/>
-                    </ModalForm>
-                }
-            </SolveQuizStep02Block>
+        {
+            loading
+            ? <Loading01 />
+            : (
+                <QuizSolveForm
+                    form={form}
+                    quiz={quiz}
+                    quizLength={form?.data.data?.length}
+                    currentIndex={currentIndex}
+                    checkTime={checkTime}
+                    setIsTimeOverrun={setIsTimeOverrun}
+                    onChange={onChange}
+                    onKeyPress={onKeyPress}
+                    errorText={errorText}
+                    hintClick={hintClick}
+                    onClick={onClickAnswer}
+                />
         )}
+        {isDialogOpen &&
+            <Dialog isOpen={isDialogOpen}
+                title={`${hintData.innerText}을(를) 보시겠습니까?`}
+                before={{ onClick: handleDialogClose }}
+                after={{ onClick: onAfterClick }}
+            >
+                힌트를 보시면 포인트가 차감됩니다.
+            </Dialog>
+        }
+        {isOpen &&
+            <ModalForm isOpen={isOpen} title="안내 메세지">
+                <div style={{ textAlign: 'center' }}>
+                    <p style={{ marginBottom: '30px' }}>힌트는 로그인 후 이용가능합니다.</p>
+                    <Button medium onClick={handleClose}>확인</Button>
+                </div>
+            </ModalForm>
+        }
+        {isModalOpen &&
+            <ModalForm isOpen={isModalOpen}>
+                <AnswerConfirm isCorrect={isCorrect} isTimeOverrun={isTimeOverrun}/>
+            </ModalForm>
+        }
         </>
     );
 };
