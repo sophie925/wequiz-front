@@ -58,6 +58,8 @@ export const CommonTopEndBlock= styled.div`
 export const InputWrap = styled.div`
     display: flex;
     flex-direction: column;
+    margin-bottom: 12px;
+
     label {
         font-weight: bold;
         margin-bottom: 5px;
@@ -70,8 +72,8 @@ export const InputWrap = styled.div`
         box-sizing: border-box;
         padding: 15px 20px;
         font-size: 14px;
-        margin-bottom: 12px;
         height: 50px;
+
         &:focus {
             border: 2px solid ${oc.indigo[8]};
             box-sizing: border-box;
@@ -81,27 +83,19 @@ export const InputWrap = styled.div`
 
 // 인풋박스 + 버튼 (퀴즈만들기)
 export const InputBtnWrap = styled.div`
-    display: flex;
-    justify-content: space-between;
-    input:focus {
-        border: 1px solid #ddd;
-    }
-    button {
-        width: 30%;
-        height: 48px;
-        margin-left: 5px;
-    }
+    display: grid;
+    grid-template-columns: 1fr 0.3fr;
+    gap: 0.5rem;
 `;
 
 // 인풋박스 + 양쪽버튼 (퀴즈만들기)
 export const BothInputWrap = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
-    div {
-        flex: 0.5;
-    }
+
     button {
-        width: 50%;
+        width: 100%;
         height: 50px;
     }
 `;

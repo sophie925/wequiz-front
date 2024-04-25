@@ -15,7 +15,7 @@ export const checkEmail = (value) => {
 
 // 정답 유효성 검사
 export const checkAnswer = (value) => {
-    const regExp = /^[가-힣]+$/;
+    const regExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]+$/;
 
     return regExp.test(value);
 };

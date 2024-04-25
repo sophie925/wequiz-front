@@ -1,4 +1,4 @@
-import QuizForm from "../../components/quiz/QuizForm";
+import QuizMakeForm from "../../components/quiz/make/QuizMakeForm";
 import { checkAnswer } from "../../utils/CheckValidation";
 import { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +30,9 @@ const MakeQuizStep02 = () => {
         const { name, value } = e.target;
         setErrorText("");
         if (name === "answer") {
+            if (!checkAnswer(value)) {
+                setErrorText("정답은 반드시 한글(띄어쓰기 포함)로 입력되어야 합니다.");
+            }
             setInputs({
                 ...inputs,
                 [name]: value
@@ -116,7 +119,7 @@ const MakeQuizStep02 = () => {
     };
     
     return (
-        <QuizForm
+        <QuizMakeForm
             step="step2"
             form={inputs}
             data={data}
