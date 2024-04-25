@@ -1,22 +1,37 @@
 import { MdOutlineCreate } from 'react-icons/md';
-import { Button, ToggleButton, ToggleButtonGroup } from "../../../node_modules/@mui/material/index";
-import { QuizFormBlock, QuizNumberBtnWrap, QuizNumberText } from "../../styles/quiz/QuizElements";
-import { BothInputWrap, ErrorText, InputBtnWrap, InputWrap } from "../../styles/common/CommonElements";
-import StyledButton from "../common/Button";
-import CategoryItem from "./CategoryItem";
-import QuizDetailList from "./QuizDetailList";
-import ModalForm from "../common/ModalForm";
-import Dialog from "../common/Dialog";
+import { Button, ToggleButton, ToggleButtonGroup } from "../../../../node_modules/@mui/material/index";
+import { QuizMakeFormBlock, QuizNumberBtnWrap, QuizNumberText } from "../../../styles/quiz/QuizElements";
+import { BothInputWrap, ErrorText, InputBtnWrap, InputWrap } from "../../../styles/common/CommonElements";
+import StyledButton from "../../common/Button";
+import CategoryItem from "../CategoryItem";
+import QuizDetailList from "../QuizDetailList";
+import ModalForm from "../../common/ModalForm";
+import Dialog from "../../common/Dialog";
 
 /**
  * 퀴즈 만들기 또는 풀기 폼을 보여줌
  */
 
-const QuizForm = ({ step, form, data, quizCount, selectNumber, errorText,
-        isModalOpen, onMadalClick, onCateClick, onChange, onClick,
-        isOpen, handleClose, onClickQuizNumberButton, isDialogOpen, isDialogClick }) => {
+const QuizForm = ({
+    step, 
+    form, 
+    data, 
+    quizCount, 
+    selectNumber, 
+    errorText,
+    isModalOpen, 
+    onMadalClick, 
+    onCateClick, 
+    onChange, 
+    onClick,
+    isOpen, 
+    handleClose, 
+    onClickQuizNumberButton, 
+    isDialogOpen, 
+    isDialogClick 
+}) => {
     return (
-        <QuizFormBlock>
+        <QuizMakeFormBlock>
             {step === "step1" && (
                 <>
                     <InputWrap>
@@ -165,7 +180,7 @@ const QuizForm = ({ step, form, data, quizCount, selectNumber, errorText,
             <StyledButton fullwidth indigo onClick={onClick}>
                 {step === "step1" ? "다 음" : (step === "step2" ? "다 음 문 제" : "문 제 완 성")}
             </StyledButton>
-        </QuizFormBlock>
+        </QuizMakeFormBlock>
     );
 };
 

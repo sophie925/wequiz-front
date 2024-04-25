@@ -53,7 +53,7 @@ export const QuizTopEndBlock = styled.div`
     align-items: center;
 `;
 
-export const QuizFormBlock = styled.div`
+export const QuizMakeFormBlock = styled.div`
     display: flex;
     flex-direction: column;
 `;

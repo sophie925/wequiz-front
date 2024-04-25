@@ -1,4 +1,4 @@
-import QuizForm from "../../components/quiz/QuizForm";
+import QuizMakeForm from "../../components/quiz/make/QuizMakeForm";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -82,7 +82,7 @@ const MakeQuizStep01 = () => {
     };
 
     return (
-        <QuizForm
+        <QuizMakeForm
             step="step1"
             form={form}
             data={data}
