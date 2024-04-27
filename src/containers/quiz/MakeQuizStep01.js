@@ -61,7 +61,10 @@ const MakeQuizStep01 = () => {
         }
         dispatch(updateData({
             form: 'make',
-            data: { ...data, [name]: name === "quizCount"? Number(value) : value }
+            data: {
+                ...data,
+                [name]: name === "quizCount" ? Number(value) : value
+            }
         }));
     };
     
