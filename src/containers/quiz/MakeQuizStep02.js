@@ -42,7 +42,9 @@ const MakeQuizStep02 = () => {
             newHints[index] = value;
             setInputs({
                 ...inputs,
-                [name]: newHints.length > 0 ? newHints.filter(hint => hint !== '') : newHints,
+                [name]: newHints.length > 0
+                        ? newHints.filter(hint => hint !== '')
+                        : newHints
             });
         }
     };
