@@ -1,7 +1,7 @@
+import UserInfoForm from "../../components/auth/UserInfoForm";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import UserInfoForm from "../../components/auth/UserInfoForm";
 import { authReset, changeField, initializeForm, modifyProfile } from "../../modules/auth";
 
 const ModifyInfoForm = () => {
@@ -16,7 +16,11 @@ const ModifyInfoForm = () => {
 
     useEffect(() => {
         dispatch(initializeForm('modify'));
-        dispatch(changeField({ form: 'modify', key: 'name', value: '' }));
+        dispatch(changeField({
+            form: 'modify',
+            key: 'name',
+            value: ''
+        }));
     }, [dispatch]);
 
     const onChange = e => {
@@ -33,7 +37,7 @@ const ModifyInfoForm = () => {
         );
     };
 
-    // 저장 버튼 클릭
+    // 확인 버튼 클릭
     const onSubmit = e => {
         e.preventDefault();
         const { name } = form;
@@ -47,12 +51,16 @@ const ModifyInfoForm = () => {
     // 회원정보 수정 api 수행 후 로직
     useEffect(() => {
         if (authError) {
-            console.log("회원정보 수정 발생: ", authError);
+            console.log("회원정보 수정 오류발생: ", authError);
         }
         if (auth) {
             // console.log("회원정보 수정 성공: ", auth);
             dispatch(authReset());
-            dispatch(changeField({ form: 'modify', key: 'name', value: '' }));
+            dispatch(changeField({
+                form: 'modify',
+                key: 'name',
+                value: ''
+            }));
             navigate("/mypage");
         }
     }, [auth, authError, dispatch, navigate]);

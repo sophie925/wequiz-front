@@ -1,5 +1,4 @@
-import { InputWrap } from "../../../styles/common/CommonElements";
-import { InputBothWrap, InputBoxLabel } from "../../../styles/common/InputElements";
+import { InputBothWrap, InputBoxLabel, InputBoxWrap } from "../../../styles/common/InputElements";
 import InputForm from "./InputForm";
 import InputToggle from "./InputToggle";
 
@@ -30,7 +29,7 @@ const InputToggleForm = ({
                 min={min}
                 max={max}
             />
-            <InputWrap>
+            <InputBoxWrap>
                 <InputBoxLabel>{title2}{require && '*'}</InputBoxLabel>
                 <InputToggle
                     name={name2}
@@ -38,7 +37,7 @@ const InputToggleForm = ({
                     onChange={onChange2}
                     toggle={toggle}
                 />
-            </InputWrap>
+            </InputBoxWrap>
         </InputBothWrap>
     );
 };
