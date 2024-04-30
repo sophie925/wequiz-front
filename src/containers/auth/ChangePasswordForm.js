@@ -40,6 +40,9 @@ const ChangePasswordForm = () => {
     const onSubmit = e => {
         e.preventDefault();
         const { oldPassword, newPassword, newPasswordConfirm } = form;
+        console.log([oldPassword].includes(''), oldPassword);
+        console.log([newPassword].includes(''), newPassword);
+        console.log([newPasswordConfirm].includes(''), newPasswordConfirm);
         // 하나라도 비어 있다면
         if ([oldPassword, newPassword, newPasswordConfirm].includes('')) {
             setErrorText('현재 비밀번호, 새 비밀번호를 모두 입력해주세요.');
@@ -48,8 +51,16 @@ const ChangePasswordForm = () => {
         // 비밀번호가 일치하지 않는다면
         if (newPassword !== newPasswordConfirm) {
             setErrorText('새 비밀번호가 서로 일치하지 않습니다.');
-            dispatch(changeField({ form: 'change', key: 'newPassword', value: '' }));
-            dispatch(changeField({ form: 'change', key: 'newPasswordConfirm', value: '' }));
+            dispatch(changeField({
+                form: 'change',
+                key: 'newPassword',
+                value: ''
+            }));
+            dispatch(changeField({
+                form: 'change',
+                key: 'newPasswordConfirm',
+                value: ''
+            }));
             return;
         }
         dispatch(passwordChange({ oldPassword, newPassword }));

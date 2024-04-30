@@ -1,10 +1,12 @@
 import { MdNavigateNext, MdBookmarkBorder, MdOutlineTextSnippet } from "react-icons/md";
 import { LogoutWrap, UserInfoDescription, UserInfoItemBlock, UserInfoPointLabel, UserInfoLi, UserInfoNameLink, UserInfoPointBlock, UserInfoPointText, UserInfoQuickMenuBlock, UserInfoQuickMenuItemLink, UserInfoUl, WithDrawBtn, UserInfoLabel, UserInfoLink, UserInfoQuizState, QuizStatsData, StatsItem, UserInfoContentItemLink } from "../../styles/auth/UserInfoElement";
-import { ErrorText, InputWrap } from "../../styles/common/CommonElements";
+import { ErrorText } from "../../styles/common/CommonElements";
 import Button from "../common/Button";
 import ModalForm from "../common/ModalForm";
 import Dialog from "../common/Dialog";
 import DonutGraph from "../common/DonutGraph";
+import InputForm from "../common/input/InputForm";
+import InputBox from "../common/input/InputBox";
 
 const UserInfoForm = ({ type, form, userName, errorText, onLogout, onWithDraw, onChange, onSubmit,
     isDialogOpen, onDialogClick, isModalOpen, handleModalClose }) => {
@@ -111,54 +113,42 @@ const UserInfoForm = ({ type, form, userName, errorText, onLogout, onWithDraw, o
             )}
             {type === "modifyInfo" && (
                 <form onSubmit={onSubmit} noValidate>
-                    <InputWrap>
-                        <label>이름</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={form.name}
-                            onChange={onChange}
-                            required
-                        />
-                    </InputWrap>
+                    <InputForm
+                        title="이름"
+                        type="text"
+                        name="name"
+                        value={form.name}
+                        onChange={onChange}
+                    />
                     <ErrorText>{errorText}</ErrorText>
                     <Button fullwidth>확인</Button>
                 </form>
             )}
             {type === "changePassword" && (
                 <form onSubmit={onSubmit} noValidate>
-                    <InputWrap>
-                        <label>현재 비밀번호</label>
-                        <input
-                            type="password"
-                            name="oldPassword"
-                            // value={form.oldPassword}
-                            onChange={onChange}
-                            placeholder="비밀번호를 입력해주세요."
-                            required
-                        />
-                    </InputWrap>
-                    <InputWrap>
-                        <label>새 비밀번호</label>
-                        <input
-                            type="password"
-                            name="newPassword"
-                            // value={form.newPassword}
-                            onChange={onChange}
-                            placeholder="새 비밀번호를 입력해주세요."
-                            required
-                        />
-                    </InputWrap>
-                    <InputWrap>
-                        <input
-                            type="password"
-                            name="newPasswordConfirm"
-                            // value={form.newPasswordConfirm}
-                            onChange={onChange}
-                            placeholder="새 비밀번호를 다시 한번 입력해주세요."
-                            required
-                        />
-                    </InputWrap>
+                    <InputForm
+                        title="현재 비밀번호"
+                        type="password"
+                        name="oldPassword"
+                        value={form.oldPassword}
+                        placeholder="비밀번호를 입력해주세요."
+                        onChange={onChange}
+                    />
+                    <InputForm
+                        title="새 비밀번호"
+                        type="password"
+                        name="newPassword"
+                        value={form.newPassword}
+                        placeholder="새 비밀번호를 입력해주세요."
+                        onChange={onChange}
+                    />
+                    <InputBox
+                        type="password"
+                        name="newPasswordConfirm"
+                        value={form.newPasswordConfirm}
+                        placeholder="새 비밀번호를 다시 한번 입력해주세요."
+                        onChange={onChange}
+                    />
                     <ErrorText>{errorText}</ErrorText>
                     <Button fullwidth>저장</Button>
                     {isModalOpen && 
