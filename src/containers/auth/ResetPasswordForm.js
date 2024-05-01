@@ -23,7 +23,11 @@ const ResetPasswordForm = () => {
     // 비밀번호 변경 확인안내용 모달
     const [isOpen, setIsOpen] = useState(false);
     const handleOpen = () => {
-        dispatch(changeField({ form: 'reset', key: 'email', value: '' }));
+        dispatch(changeField({
+            form: 'reset',
+            key: 'email',
+            value: ''
+        }));
         setIsOpen(true);
     };
     const handleClose = () => {
@@ -54,7 +58,6 @@ const ResetPasswordForm = () => {
         const email = getParamter("email");
         const authKey = getParamter("authKey");
         const { newPassword, newPasswordConfirm } = form;
-                
         // 하나라도 비어 있다면
         if ([newPassword, newPasswordConfirm].includes('')) {
             setErrorText('비밀번호를 모두 입력해주세요.');
@@ -63,8 +66,16 @@ const ResetPasswordForm = () => {
         // 비밀번호가 일치하지 않는다면
         if (newPassword !== newPasswordConfirm) {
             setErrorText('비밀번호가 서로 일치하지 않습니다.');
-            dispatch(changeField({ form: 'change', key: 'newPassword', value: '' }));
-            dispatch(changeField({ form: 'change', key: 'newPasswordConfirm', value: '' }));
+            dispatch(changeField({
+                form: 'change',
+                key: 'newPassword',
+                value: ''
+            }));
+            dispatch(changeField({
+                form: 'change',
+                key: 'newPasswordConfirm',
+                value: ''
+            }));
             return;
         }
         dispatch(resetPassword({ email, authKey, newPassword }));
