@@ -3,6 +3,8 @@ import { CheckboxWrap, HrStyle } from "../../styles/auth/AuthOtherElements";
 import { ErrorText, InputWrap } from "../../styles/common/CommonElements";
 import Button from "../common/Button";
 import ModalForm from "../common/ModalForm";
+import InputBox from "../common/input/InputBox";
+import InputForm from "../common/input/InputForm";
 
 /**
  * 계정 생성 또는 이메일 전송 또는 비밀번호 재설정 폼을 보여줌
@@ -74,16 +76,13 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
             )}
             {type === "send" && (
                 <>
-                    <InputWrap>
-                        <label>비밀번호를 재설정 할 이메일</label>
-                        <input
-                            type="email"
-                            name="email"
-                            onChange={onChange}
-                            placeholder="이메일을 입력해주세요."
-                            required
-                        />
-                    </InputWrap>
+                    <InputForm
+                        title="이메일(비밀번호 재설정)"
+                        type="email"
+                        name="email"
+                        placeholder="비밀번호 재설정하기 위한 이메일을 입력해주세요."
+                        onChange={onChange}
+                    />
                     <ErrorText>{errorText}</ErrorText>
                     <Button fullwidth indigo>이메일 전송</Button>
                     {isOpen &&
@@ -100,25 +99,20 @@ const AuthOtherForm = ({ type, errorText, values, checkItems, onChangeCheck, onC
             )}
             {type === "reset" && (
                 <>
-                    <InputWrap>
-                        <label>새 비밀번호</label>
-                        <input
-                            type="password"
-                            name="newPassword"
-                            onChange={onChange}
-                            placeholder="새 비밀번호를 입력해주세요."
-                            required
-                        />
-                    </InputWrap>
-                    <InputWrap>
-                        <input
-                            type="password"
-                            name="newPasswordConfirm"
-                            onChange={onChange}
-                            placeholder="새 비밀번호를 다시 한번 입력해주세요."
-                            required
-                        />
-                    </InputWrap>
+                    <InputForm
+                        title="새 비밀번호"
+                        type="password"
+                        name="newPassword"
+                        placeholder="새 비밀번호를 입력해주세요."
+                        onChange={onChange}
+                    />
+                    <InputBox
+                        type="password"
+                        name="newPasswordConfirm"
+                        placeholder="새 비밀번호를 다시 한번 입력해주세요."
+                        onChange={onChange}
+                        required
+                    />
                     <ErrorText>{errorText}</ErrorText>
                     <Button fullwidth indigo>저장</Button>
                     {isOpen &&
