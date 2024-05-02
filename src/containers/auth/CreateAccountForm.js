@@ -8,7 +8,7 @@ import { changeField, initializeForm, create } from "../../modules/auth";
 const CrerateAccountForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const loaction = useLocation();
+    const location = useLocation();
     const { form, auth, authError } = useSelector(({ auth }) => ({
         form: auth.create,
         auth: auth.auth,
@@ -23,8 +23,8 @@ const CrerateAccountForm = () => {
         { id: 2, label: '[선택] 만 14세 이상입니다.' },
         { id: 3, label: '[선택] 마케팅 활용 동의 및 광고 수신 동의' }
     ];
-    const authKey = loaction.state.authenticationKey;
-    const email = loaction.state.emailAccount;
+    const authKey = location.state.authenticationKey;
+    const email = location.state.emailAccount;
 
     // 컴포넌트가 처음 렌더링될 때 form을 초기화함
     useEffect(() => {
@@ -65,7 +65,6 @@ const CrerateAccountForm = () => {
                 form: 'create',
                 key: name,
                 value
-
             })
         );
     };
@@ -80,9 +79,17 @@ const CrerateAccountForm = () => {
         }
         // 비밀번호가 일치하지 않는다면
         if (password !== passwordConfirm) {
-            setErrorText('비밀번호가 일치하지 않습니다.');
-            dispatch(changeField({ form: 'create', key: 'password', value: '' }));
-            dispatch(changeField({ form: 'create', key: 'passwordConfirm', value: '' }));
+            setErrorText('입력한 비밀번호가 일치하지 않습니다.');
+            dispatch(changeField({
+                form: 'create',
+                key: 'password',
+                value: ''
+            }));
+            dispatch(changeField({
+                form: 'create',
+                key: 'passwordConfirm',
+                value: ''
+            }));
             return;
         }
         if(!checkItems.includes(0) || !checkItems.includes(1)){
@@ -107,6 +114,7 @@ const CrerateAccountForm = () => {
     return (
         <AuthOtherForm
             type="create"
+            form={form}
             errorText={errorText}
             values={values}
             checkItems={checkItems}
